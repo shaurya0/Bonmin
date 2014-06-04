@@ -2313,6 +2313,35 @@ OsiTMINLPInterface::switchToOriginalProblem(){
 }
 
 double
+OsiTMINLPInterface::solveOFeasibilityProblem(size_t n,const double * x_bar,const int *inds,
+                                            double a, double s, int L, double e)
+{
+  if(! IsValid(feasibilityProblem_)) {
+    throw SimpleError("No feasibility problem","getFeasibilityOuterApproximation");
+  }  
+//  feasibilityProblem_->set_use_feasibility_pump_objective(true);
+//  feasibilityProblem_->set_dist_to_point_obj(n,(const Number *) x_bar,(const Index *) inds);
+//  feasibilityProblem_->setLambda(a);
+//  feasibilityProblem_->setSigma(s);
+//  feasibilityProblem_->setNorm(L);
+//  feasibilityProblem_->setEta(e);
+//  feasibilityProblem_->set_use_cutoff_constraint(false);
+//  feasibilityProblem_->set_use_local_branching_constraint(false);
+//  nCallOptimizeTNLP_++;
+//  totalNlpSolveTime_-=CoinCpuTime();
+//  SmartPtr<TNLPSolver> app2 = app_->clone();
+//  app2->options()->SetIntegerValue("print_level", (Index) 0);
+//  optimizationStatus_ = app2->OptimizeTNLP(GetRawPtr(feasibilityProblem_));
+//  totalNlpSolveTime_+=CoinCpuTime();
+//  hasBeenOptimized_=true;
+//  double d = feasibilityProblem_-> getDistToPoint();
+//  return d;
+  // TODO:
+  return 0.0;
+}
+
+
+double
 OsiTMINLPInterface::solveFeasibilityProblem(size_t n,const double * x_bar,const int *inds, 
                                             double a, double s, int L)
 {

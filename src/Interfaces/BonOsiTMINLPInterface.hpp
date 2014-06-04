@@ -924,6 +924,21 @@ class Messages : public CoinMessages
 /** Get a benders cut from solution.*/
 void getBendersCut(OsiCuts &cs, bool global);
 
+
+  /** Given a point x_bar this solves the problem of finding the point which minimize a convex 
+    *combination between the distance to  x_bar and the original objective function f(x):
+   * \f$ min a * eta * (\sum\limits_{i=1}^n  ||x_{ind[i]} -\overline{x}_i)||_L) + (1 - a)* s *f(x) \f$
+   * \return Distance between feasibility set a x_bar on components in ind
+   * \param n number of elements in array x_bar and ind
+   * \param s scaling of the original objective.
+   * \param e scaling of the distance function.
+   * \param a geometric weighting factor.
+   * \param L L-norm = 1.
+   */
+
+    double solveOFeasibilityProblem(size_t n,const double * x_bar,const int *inds, double a, double s, int L, double e);
+
+
   /** Given a point x_bar this solves the problem of finding the point which minimize a convex 
     *combination between the distance to  x_bar and the original objective function f(x):
    * \f$ min a * (\sum\limits_{i=1}^n  ||x_{ind[i]} -\overline{x}_i)||_L) + (1 - a)* s *f(x) \f$
