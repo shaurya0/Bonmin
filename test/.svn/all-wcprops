@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/test
+END
+toy.mps.gz
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/test/toy.mps.gz
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/test/Makefile.am
+END
+mytoy.nl
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/test/mytoy.nl
+END
+InterfaceTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/test/InterfaceTest.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/test/Makefile.in
+END
+bonmin.opt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/test/bonmin.opt
+END

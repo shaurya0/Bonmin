@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Interfaces/Ampl
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/Makefile.am
+END
+BonAmplInterface.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/BonAmplInterface.cpp
+END
+BonAmplTMINLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/BonAmplTMINLP.cpp
+END
+BonAmplInterface.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/BonAmplInterface.hpp
+END
+BonSolReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/BonSolReader.cpp
+END
+sos_kludge.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/sos_kludge.cpp
+END
+BonAmplTMINLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/BonAmplTMINLP.hpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Interfaces/Ampl/Makefile.in
+END
+BonSolReader.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ampl/BonSolReader.hpp
+END

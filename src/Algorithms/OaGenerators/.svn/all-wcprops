@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/OaGenerators
+END
+BonOaDecBase.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOaDecBase.cpp
+END
+BonEcpCuts.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonEcpCuts.cpp
+END
+BonOACutGenerator2.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOACutGenerator2.hpp
+END
+BonOaDecBase.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOaDecBase.hpp
+END
+BonEcpCuts.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonEcpCuts.hpp
+END
+BonDummyHeuristic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonDummyHeuristic.cpp
+END
+BonFpForMinlp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Bonmin/!svn/ver/2053/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonFpForMinlp.cpp
+END
+BonDummyHeuristic.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonDummyHeuristic.hpp
+END
+BonFpForMinlp.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonFpForMinlp.hpp
+END
+BonOaNlpOptim.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOaNlpOptim.cpp
+END
+BonOaFeasChecker.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOaFeasChecker.cpp
+END
+BonOaNlpOptim.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOaNlpOptim.hpp
+END
+BonOAMessages.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOAMessages.cpp
+END
+BonOaFeasChecker.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOaFeasChecker.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/Makefile.am
+END
+BonOAMessages.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOAMessages.hpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/OaGenerators/Makefile.in
+END
+BonOACutGenerator2.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Bonmin/!svn/ver/2053/stable/1.7/Bonmin/src/Algorithms/OaGenerators/BonOACutGenerator2.cpp
+END

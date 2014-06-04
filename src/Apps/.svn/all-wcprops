@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Apps
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Bonmin/!svn/ver/2071/stable/1.7/Bonmin/src/Apps/Makefile.am
+END
+BonNodeSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Apps/BonNodeSolver.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Apps/Makefile.in
+END
+BonMin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Apps/BonMin.cpp
+END

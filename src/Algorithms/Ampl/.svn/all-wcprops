@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/Ampl
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Ampl/Makefile.am
+END
+BonAmplSetup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Ampl/BonAmplSetup.cpp
+END
+BonAmplSetup.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Ampl/BonAmplSetup.hpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/Ampl/Makefile.in
+END

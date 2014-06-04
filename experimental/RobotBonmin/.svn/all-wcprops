@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/experimental/RobotBonmin
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/experimental/RobotBonmin/Makefile.in
+END
+BonNWayChoose.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/BonNWayChoose.hpp
+END
+BonNWayObject.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/BonNWayObject.cpp
+END
+Robot-bonmin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/Robot-bonmin.cpp
+END
+RobotSetup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/RobotSetup.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/Makefile.am
+END
+BonNWayObject.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/BonNWayObject.hpp
+END
+RobotSetup.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/RobotBonmin/RobotSetup.hpp
+END
+BonNWayChoose.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/experimental/RobotBonmin/BonNWayChoose.cpp
+END

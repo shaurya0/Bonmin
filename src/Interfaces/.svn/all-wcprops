@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Bonmin/!svn/ver/2097/stable/1.7/Bonmin/src/Interfaces
+END
+BonBranchingTQP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonBranchingTQP.cpp
+END
+BonBoundsReader.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonBoundsReader.hpp
+END
+config_bonmin.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/config_bonmin.h.in
+END
+BonTMINLP2TNLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Interfaces/BonTMINLP2TNLP.cpp
+END
+BonCutStrengthener.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonCutStrengthener.cpp
+END
+BonBranchingTQP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonBranchingTQP.hpp
+END
+BonTMINLP2TNLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2097/stable/1.7/Bonmin/src/Interfaces/BonTMINLP2TNLP.hpp
+END
+BonCutStrengthener.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonCutStrengthener.hpp
+END
+BonAuxInfos.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonAuxInfos.cpp
+END
+BonTNLP2FPNLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Interfaces/BonTNLP2FPNLP.cpp
+END
+BonOsiTMINLPInterface.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2053/stable/1.7/Bonmin/src/Interfaces/BonOsiTMINLPInterface.cpp
+END
+BonAuxInfos.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonAuxInfos.hpp
+END
+BonTMINLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTMINLP.cpp
+END
+BonTNLP2FPNLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTNLP2FPNLP.hpp
+END
+BonOsiTMINLPInterface.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Interfaces/BonOsiTMINLPInterface.hpp
+END
+BonTNLPSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2097/stable/1.7/Bonmin/src/Interfaces/BonTNLPSolver.cpp
+END
+BonTMINLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTMINLP.hpp
+END
+BonCurvatureEstimator.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonCurvatureEstimator.cpp
+END
+BonMsgUtils.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonMsgUtils.hpp
+END
+BonCurvatureEstimator.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonCurvatureEstimator.hpp
+END
+BonTNLPSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTNLPSolver.hpp
+END
+config.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/config.h.in
+END
+config_bonmin_default.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2096/stable/1.7/Bonmin/src/Interfaces/config_bonmin_default.h
+END
+BonStrongBranchingSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonStrongBranchingSolver.cpp
+END
+BonStrongBranchingSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonStrongBranchingSolver.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2092/stable/1.7/Bonmin/src/Interfaces/Makefile.am
+END
+BonStartPointReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonStartPointReader.cpp
+END
+BonExitCodes.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonExitCodes.hpp
+END
+BonTMINLP2OsiLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTMINLP2OsiLP.cpp
+END
+BonStartPointReader.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonStartPointReader.hpp
+END
+BonColReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonColReader.cpp
+END
+BonTMINLP2OsiLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTMINLP2OsiLP.hpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2092/stable/1.7/Bonmin/src/Interfaces/Makefile.in
+END
+BonColReader.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonColReader.hpp
+END
+BonRegisteredOptions.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2050/stable/1.7/Bonmin/src/Interfaces/BonRegisteredOptions.cpp
+END
+BonTypes.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonTypes.hpp
+END
+BonBoundsReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonBoundsReader.cpp
+END
+BonRegisteredOptions.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Interfaces/BonRegisteredOptions.hpp
+END
+BonminConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/BonminConfig.h
+END
+config_default.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/config_default.h
+END

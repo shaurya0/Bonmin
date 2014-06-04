@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/experimental/Separable
+END
+BonOuterDescription.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/BonOuterDescription.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/Makefile.am
+END
+Sepa.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/Sepa.cpp
+END
+SepaSetup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/SepaSetup.cpp
+END
+BonHeuristicInnerApproximation.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/BonHeuristicInnerApproximation.hpp
+END
+SepaTMINLP2OsiLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/SepaTMINLP2OsiLP.hpp
+END
+SepaSetup.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/SepaSetup.hpp
+END
+SepaHeuristicInnerApproximation.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/SepaHeuristicInnerApproximation.cpp
+END
+BonOuterDescription.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/BonOuterDescription.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/experimental/Separable/Makefile.in
+END
+SepaHeuristicInnerApproximation.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/SepaHeuristicInnerApproximation.hpp
+END
+BonHeuristicInnerApproximation.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/BonHeuristicInnerApproximation.cpp
+END
+SepaTMINLP2OsiLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Separable/SepaTMINLP2OsiLP.cpp
+END

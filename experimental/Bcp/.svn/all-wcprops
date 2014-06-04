@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp
+END
+BB_cut.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BB_cut.cpp
+END
+BM.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM.cpp
+END
+BM.par
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM.par
+END
+BM_tm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM_tm.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/Makefile.in
+END
+BB_cut.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BB_cut.hpp
+END
+BM.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM.hpp
+END
+BM_lp_branch.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM_lp_branch.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/Makefile.am
+END
+BM_lp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM_lp.cpp
+END
+ampl_bcp.patch
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/ampl_bcp.patch
+END
+BM_pack.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/BM_pack.cpp
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/experimental/Bcp/README
+END

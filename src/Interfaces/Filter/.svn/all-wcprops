@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Interfaces/Filter
+END
+BonFilterSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonFilterSolver.hpp
+END
+BonBqpdSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonBqpdSolver.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/Makefile.am
+END
+BonFilterWarmStart.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonFilterWarmStart.cpp
+END
+BonBqpdWarmStart.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonBqpdWarmStart.cpp
+END
+BonFilterTypes.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonFilterTypes.hpp
+END
+BonFilterWarmStart.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonFilterWarmStart.hpp
+END
+BonBqpdWarmStart.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonBqpdWarmStart.hpp
+END
+BonFilterSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Interfaces/Filter/BonFilterSolver.cpp
+END
+BonBqpdSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Filter/BonBqpdSolver.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Interfaces/Filter/Makefile.in
+END

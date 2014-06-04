@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Bonmin/!svn/ver/2092/stable/1.7/Bonmin/src/Algorithms
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Makefile.am
+END
+BonSubMipSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2053/stable/1.7/Bonmin/src/Algorithms/BonSubMipSolver.cpp
+END
+BonCbcLpStrategy.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonCbcLpStrategy.hpp
+END
+BonSubMipSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonSubMipSolver.hpp
+END
+BonBabSetupBase.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2053/stable/1.7/Bonmin/src/Algorithms/BonBabSetupBase.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/Makefile.in
+END
+BonBonminSetup.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/BonBonminSetup.cpp
+END
+BonSolverHelp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonSolverHelp.cpp
+END
+BonBabSetupBase.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonBabSetupBase.hpp
+END
+BonCbcLpStrategy.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonCbcLpStrategy.cpp
+END
+BonBonminSetup.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonBonminSetup.hpp
+END
+BonSolverHelp.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/BonSolverHelp.hpp
+END

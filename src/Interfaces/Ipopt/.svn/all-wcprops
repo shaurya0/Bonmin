@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Interfaces/Ipopt
+END
+BonIpoptWarmStart.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/BonIpoptWarmStart.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Interfaces/Ipopt/Makefile.in
+END
+BonIpoptInteriorWarmStarter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/BonIpoptInteriorWarmStarter.cpp
+END
+BonIpoptWarmStart.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/BonIpoptWarmStart.hpp
+END
+BonIpoptSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/BonIpoptSolver.cpp
+END
+BonIpoptInteriorWarmStarter.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/BonIpoptInteriorWarmStarter.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/Makefile.am
+END
+BonIpoptSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Interfaces/Ipopt/BonIpoptSolver.hpp
+END

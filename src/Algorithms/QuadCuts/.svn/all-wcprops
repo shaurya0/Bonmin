@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Bonmin/!svn/ver/2092/stable/1.7/Bonmin/src/Algorithms/QuadCuts
+END
+BonQuadCut.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonQuadCut.hpp
+END
+BonLinearCutsGenerator.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonLinearCutsGenerator.cpp
+END
+BonQuadRow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonQuadRow.cpp
+END
+BonLinearCutsGenerator.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonLinearCutsGenerator.hpp
+END
+BonQuadRow.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonQuadRow.hpp
+END
+BonTMatrix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonTMatrix.cpp
+END
+BonOuterApprox.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonOuterApprox.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2092/stable/1.7/Bonmin/src/Algorithms/QuadCuts/Makefile.am
+END
+BonArraysHelpers.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonArraysHelpers.hpp
+END
+BonTMatrix.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonTMatrix.hpp
+END
+BonOuterApprox.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonOuterApprox.hpp
+END
+next
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/next
+END
+BonTMINLP2Quad.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonTMINLP2Quad.cpp
+END
+BonTMINLPLinObj.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonTMINLPLinObj.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2092/stable/1.7/Bonmin/src/Algorithms/QuadCuts/Makefile.in
+END
+BonTMINLP2Quad.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonTMINLP2Quad.hpp
+END
+BonTMINLPLinObj.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonTMINLPLinObj.hpp
+END
+BonQuadCut.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/QuadCuts/BonQuadCut.cpp
+END

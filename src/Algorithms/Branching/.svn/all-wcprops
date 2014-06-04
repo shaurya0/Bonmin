@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/Branching
+END
+BonQpBranchingSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/BonQpBranchingSolver.hpp
+END
+BonPseudoCosts.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/BonPseudoCosts.hpp
+END
+BonRandomChoice.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/BonRandomChoice.hpp
+END
+BonLpBranchingSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/Branching/BonLpBranchingSolver.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/src/Algorithms/Branching/Makefile.in
+END
+BonChooseVariable.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/Branching/BonChooseVariable.cpp
+END
+BonCurvBranchingSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/Branching/BonCurvBranchingSolver.cpp
+END
+BonLpBranchingSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/BonLpBranchingSolver.hpp
+END
+BonQpBranchingSolver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/Branching/BonQpBranchingSolver.cpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/Makefile.am
+END
+BonChooseVariable.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/Branching/BonChooseVariable.hpp
+END
+BonCurvBranchingSolver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/BonCurvBranchingSolver.hpp
+END
+BonPseudoCosts.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/Algorithms/Branching/BonPseudoCosts.cpp
+END
+BonRandomChoice.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/Algorithms/Branching/BonRandomChoice.cpp
+END

@@ -1,0 +1,10 @@
+K 13
+svn:mergeinfo
+V 226
+/branches/split/Bonmin/src:1733-1756
+/stable/1.3/Bonmin/src:1560-1604,1632-1662
+/stable/1.4/Bonmin/src:1730,1840
+/stable/1.5/Bonmin/src:1905-1906,1916,1931
+/stable/1.6/Bonmin/src:2012,2016
+/trunk/Bonmin/src:2033-2072,2088-2091
+END

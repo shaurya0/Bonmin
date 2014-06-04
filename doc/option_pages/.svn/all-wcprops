@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Bonmin/!svn/ver/2050/stable/1.7/Bonmin/doc/option_pages
+END
+ltrick.sty
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/doc/option_pages/ltrick.sty
+END
+genHtml.sh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/doc/option_pages/genHtml.sh
+END
+genOptionsDocs.sh
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Bonmin/!svn/ver/2050/stable/1.7/Bonmin/doc/option_pages/genOptionsDocs.sh
+END
+options_list_ipopt_content.tex
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/doc/option_pages/options_list_ipopt_content.tex
+END
+Head.tex
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Bonmin/!svn/ver/2050/stable/1.7/Bonmin/doc/option_pages/Head.tex
+END
+bonmin.sty
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2050/stable/1.7/Bonmin/doc/option_pages/bonmin.sty
+END
+options_list_TEMPLATE.tex
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/doc/option_pages/options_list_TEMPLATE.tex
+END
+options_list_bonmin_content.tex
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/doc/option_pages/options_list_bonmin_content.tex
+END
+htrick.sty
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/doc/option_pages/htrick.sty
+END
+options_list_filter_content.tex
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/doc/option_pages/options_list_filter_content.tex
+END

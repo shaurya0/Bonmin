@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/examples/CppExample
+END
+MyTMINLP.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/examples/CppExample/MyTMINLP.hpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/examples/CppExample/Makefile.in
+END
+MyBonmin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/examples/CppExample/MyBonmin.cpp
+END
+Mybonmin.opt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/examples/CppExample/Mybonmin.opt
+END
+MyTMINLP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/examples/CppExample/MyTMINLP.cpp
+END

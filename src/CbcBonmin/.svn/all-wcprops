@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/Bonmin/!svn/ver/2097/stable/1.7/Bonmin/src/CbcBonmin
+END
+BonDiver.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/CbcBonmin/BonDiver.hpp
+END
+bonminamplinterface-uninstalled.pc.in
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/bonminamplinterface-uninstalled.pc.in
+END
+BonBabInfos.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonBabInfos.cpp
+END
+BonCbcNlpStrategy.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/CbcBonmin/BonCbcNlpStrategy.cpp
+END
+BonCbc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bonmin/!svn/ver/2097/stable/1.7/Bonmin/src/CbcBonmin/BonCbc.cpp
+END
+BonBabInfos.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonBabInfos.hpp
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Bonmin/!svn/ver/2090/stable/1.7/Bonmin/src/CbcBonmin/Makefile.am
+END
+BonCbcNlpStrategy.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonCbcNlpStrategy.hpp
+END
+BonCbc.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonCbc.hpp
+END
+BonCbcNode.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2043/stable/1.7/Bonmin/src/CbcBonmin/BonCbcNode.cpp
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Bonmin/!svn/ver/2090/stable/1.7/Bonmin/src/CbcBonmin/Makefile.in
+END
+BonCbcNode.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonCbcNode.hpp
+END
+bonminamplinterface.pc.in
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/bonminamplinterface.pc.in
+END
+BonGuessHeuristic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonGuessHeuristic.cpp
+END
+BonDiver.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonDiver.cpp
+END
+BonGuessHeuristic.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/src/CbcBonmin/BonGuessHeuristic.hpp
+END

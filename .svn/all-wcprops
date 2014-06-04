@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/Bonmin/!svn/ver/2097/stable/1.7/Bonmin
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/install-sh
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/Bonmin/!svn/ver/2096/stable/1.7/Bonmin/configure
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Bonmin/!svn/ver/2084/stable/1.7/Bonmin/Makefile.in
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/LICENSE
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/AUTHORS
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/depcomp
+END
+bonmin.pc.in
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/bonmin.pc.in
+END
+config.guess
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/config.guess
+END
+config.sub
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/config.sub
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/README
+END
+ltmain.sh
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/ltmain.sh
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Bonmin/!svn/ver/2096/stable/1.7/Bonmin/configure.ac
+END
+INSTALL
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/INSTALL
+END
+bonmin-uninstalled.pc.in
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/bonmin-uninstalled.pc.in
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/missing
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Bonmin/!svn/ver/2033/stable/1.7/Bonmin/Makefile.am
+END
