@@ -25,7 +25,7 @@ namespace Bonmin
     /**@name Constructors/Destructors */
     //@{
     /** Build using tnlp as source problem.*/
-    TNLP2FPNLP(const Ipopt::SmartPtr<Ipopt::TNLP> tnlp, double objectiveScalingFactor = 100);
+    TNLP2FPNLP(const Ipopt::SmartPtr<Ipopt::TNLP> tnlp, double objectiveScalingFactor = 1);
 
     /** Build using tnlp as source problem and using other for all other parameters..*/
     TNLP2FPNLP(const Ipopt::SmartPtr<TNLP> tnlp, const Ipopt::SmartPtr<TNLP2FPNLP> other);
@@ -72,14 +72,10 @@ namespace Bonmin
      */
     void set_dist_to_point_obj(size_t n, const Ipopt::Number * vals, const Ipopt::Index * inds);
 
-     /** Set the value for sigma */
-     void setSigma(double sigma){
-       assert(sigma >= 0.);
-       sigma_ = sigma;}
-     /** Set the value for lambda*/
-     void setLambda(double lambda){
-       assert(lambda >= 0. && lambda <= 1.);
-       lambda_ = lambda;}
+     /** Set the value for alpha*/
+     void setAlpha(double alpha){
+       assert(alpha >= 0. && alpha <= 1.);
+       alpha_ = alpha;}
      /** Set the value for simgma */
      void setNorm(int norm){
        assert(norm >0 && norm < 3);
@@ -101,20 +97,20 @@ namespace Bonmin
      */
     virtual bool get_starting_point(Ipopt::Index n, bool init_x, Ipopt::Number* x,
         bool init_z, Ipopt::Number* z_L, Ipopt::Number* z_U,
-        Ipopt::Index m, bool init_lambda,
-        Ipopt::Number* lambda)
+        Ipopt::Index m, bool init_alpha,
+        Ipopt::Number* alpha)
     {
       int m2 = m;
       if(use_cutoff_constraint_) {
         m2--;
-        if(lambda!=NULL)lambda[m2] = 0;
+        if(alpha!=NULL)alpha[m2] = 0;
       }
       if(use_local_branching_constraint_) {
         m2--;
-        if(lambda!= NULL)lambda[m2] = 0;
+        if(alpha!= NULL)alpha[m2] = 0;
       }
       int ret_code = tnlp_->get_starting_point(n, init_x, x,
-          init_z, z_L, z_U, m2, init_lambda, lambda);
+          init_z, z_L, z_U, m2, init_alpha, alpha);
       return ret_code;
     }
 
@@ -139,8 +135,8 @@ namespace Bonmin
 
     /** Evaluate the modified Hessian of the Lagrangian*/
     virtual bool eval_h(Ipopt::Index n, const Ipopt::Number* x, bool new_x,
-        Ipopt::Number obj_factor, Ipopt::Index m, const Ipopt::Number* lambda,
-        bool new_lambda, Ipopt::Index nele_hess,
+        Ipopt::Number obj_factor, Ipopt::Index m, const Ipopt::Number* alpha,
+        bool new_alpha, Ipopt::Index nele_hess,
         Ipopt::Index* iRow, Ipopt::Index* jCol, Ipopt::Number* values);
     //@}
 
@@ -149,7 +145,7 @@ namespace Bonmin
     /** This method is called when the algorithm is complete so the TNLP can store/write the solution */
     virtual void finalize_solution(Ipopt::SolverReturn status,
         Ipopt::Index n, const Ipopt::Number* x, const Ipopt::Number* z_L, const Ipopt::Number* z_U,
-        Ipopt::Index m, const Ipopt::Number* g, const Ipopt::Number* lambda,
+        Ipopt::Index m, const Ipopt::Number* g, const Ipopt::Number* alpha,
         Ipopt::Number obj_value,
         const Ipopt::IpoptData* ip_data,
         Ipopt::IpoptCalculatedQuantities* ip_cq);
@@ -187,6 +183,16 @@ namespace Bonmin
       return objectiveScalingFactor_;
     }
 
+    void setDistanceScalingFactor(double value)
+    {
+        distanceScalingFactor_ = value;
+    }
+
+    double getDistanceScalingFactor() const
+    {
+        return distanceScalingFactor_;
+    }
+
   private:
     /** @name Internal methods to help compute the distance, its gradient and hessian */
     //@{
@@ -220,17 +226,22 @@ namespace Bonmin
     vector<Ipopt::Index> inds_;
     /// Values of the point to which we separate (if x is the point vals_[i] should be x[inds_[i]] )
     vector<Ipopt::Number> vals_;
-    /** value for the convex combination to take between original objective and distance function.
-      * ( take lambda_ * distance + (1-lambda) sigma f(x).*/
-    double lambda_;
+    /** value for the convex combination to take between original objective and distance function.*/
+      
+    double alpha_;
+
     /** Scaling for the original objective.*/
-    double sigma_;
+    
    /** Norm to use (L_1 or L_2).*/
    int norm_;
     //@}
 
+
     /// Scaling factor for the objective
     double objectiveScalingFactor_;
+
+    // Scaling factor for the distance function
+    double distanceScalingFactor_;
 
     /**@name Flags to  select the objective function and extra constraints*/
     //@{

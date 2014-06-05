@@ -18,8 +18,7 @@ namespace Bonmin
       tnlp_(tnlp),
       inds_(),
       vals_(),
-      lambda_(1.),
-      sigma_(1.),
+      alpha_(1.),
       norm_(2),
       objectiveScalingFactor_(objectiveScalingFactor),
       use_feasibility_pump_objective_(false),
@@ -34,8 +33,7 @@ namespace Bonmin
       tnlp_(tnlp),
       inds_(other->inds_),
       vals_(other->vals_),
-      lambda_(other->lambda_),
-      sigma_(other->sigma_),
+      alpha_(other->alpha_),
       norm_(other->norm_),
       objectiveScalingFactor_(other->objectiveScalingFactor_),
       use_feasibility_pump_objective_(other->use_feasibility_pump_objective_),
@@ -160,9 +158,10 @@ namespace Bonmin
   {
     bool ret_code = tnlp_->eval_f(n, x, new_x, obj_value);//for new_x
 
-    if(use_feasibility_pump_objective_) {
-      obj_value *= (1 - lambda_) * sigma_;
-      obj_value += objectiveScalingFactor_*lambda_*dist_to_point(x);
+    if(use_feasibility_pump_objective_) 
+    {
+      obj_value *= alpha_ * objectiveScalingFactor_;
+      obj_value += distanceScalingFactor_*(1-alpha_)*dist_to_point(x);
     }
 
     return ret_code;
@@ -174,25 +173,34 @@ namespace Bonmin
   {
     bool ret_code = tnlp_->eval_grad_f(n, x, new_x, grad_f);
 
-    if(use_feasibility_pump_objective_) {
-      for(int i = 0 ; i < n ; i++) {
-	grad_f[i] *= (1-lambda_) * sigma_;
+    if(use_feasibility_pump_objective_) 
+    {
+      for(int i = 0 ; i < n ; i++) 
+      {
+        grad_f[i] *= alpha_ * objectiveScalingFactor_;
       }
-      if(norm_ ==2){
-	for(unsigned int i = 0 ; i < inds_.size() ; i++) {
-	  grad_f[inds_[i]] += objectiveScalingFactor_*2*lambda_*( x[inds_[i]] - vals_[i] );
-	}
+      if(norm_ ==2)
+      {
+        for(unsigned int i = 0 ; i < inds_.size() ; i++) 
+        {
+          grad_f[inds_[i]] += distanceScalingFactor_*2*(1-alpha_)*( x[inds_[i]] - vals_[i] );
+        }
       }
-      else{
-	for(unsigned int i = 0 ; i < inds_.size() ; i++) {
-	  if(vals_[i] <= 0.1)
-	    grad_f[inds_[i]] += objectiveScalingFactor_*lambda_;
-	  else
-	    grad_f[inds_[i]] -= objectiveScalingFactor_*lambda_;
-	}
+      else
+      {
+        for(unsigned int i = 0 ; i < inds_.size() ; i++) 
+        {
+          if(vals_[i] <= 0.1)
+          {
+            grad_f[inds_[i]] += distanceScalingFactor_ * alpha_;
+          }
+          else
+          {
+            grad_f[inds_[i]] -= distanceScalingFactor_ * alpha_;
+          }
+        }
       }
     }
-   
     return ret_code;
   }
 
@@ -372,6 +380,8 @@ namespace Bonmin
     return ret_code;
   }
 
+  //TODO eval_h
+
   bool
   TNLP2FPNLP::eval_h(Index n, const Number* x, bool new_x,
 		     Number obj_factor, Index m, const Number* lambda,
@@ -384,23 +394,23 @@ namespace Bonmin
 
     if(use_cutoff_constraint_ && use_local_branching_constraint_) {
       double coef_obj = (iRow != NULL)?0 : lambda[m - 2];
-      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-lambda_)*sigma_ + coef_obj, 
+      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-alpha_)*sigma_ + coef_obj, 
 			       m - 2, lambda, new_lambda, nele_hess - nnz_obj_h, 
 			       iRow, jCol, values);
     }
     else if(use_cutoff_constraint_) {
       double coef_obj = (iRow != NULL)?0 : lambda[m - 1];
-      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-lambda_)*sigma_ + coef_obj, 
+      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-alpha_)*sigma_ + coef_obj, 
 			       m - 1, lambda, new_lambda, nele_hess - nnz_obj_h, 
 			       iRow, jCol, values);
     }
     else if(use_local_branching_constraint_) {
-      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-lambda_)*sigma_, 
+      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-alpha_)*sigma_, 
 			       m - 1, lambda, new_lambda, nele_hess - nnz_obj_h, 
 			       iRow, jCol, values);
     }
     else { // this is the original feasibility pump implementation
-      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-lambda_)*sigma_, 
+      ret_code = tnlp_->eval_h(n, x, new_x, obj_factor*(1-alpha_)*sigma_, 
 			       m, lambda, new_lambda, nele_hess - nnz_obj_h, 
 			       iRow, jCol, values);
     }
@@ -426,7 +436,7 @@ namespace Bonmin
 	  values += k;
 	  for(unsigned int i = 0; i < inds_.size() ; i++)
 	    {
-	      values[i] = 2* objectiveScalingFactor_* lambda_* obj_factor;
+	      values[i] = 2* objectiveScalingFactor_* alpha_* obj_factor;
 	    }
 	  DBG_ASSERT(k==nele_hess);
 	}
