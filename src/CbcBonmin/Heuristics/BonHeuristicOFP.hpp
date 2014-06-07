@@ -70,6 +70,15 @@ namespace Bonmin
     /** Norm of the objective function - either 1 or 2 */
     int objective_norm_;
 
+    // objective function user weight (u_2), value is read through options
+    double obj_user_weight_;
+
+    // distance function user weight (u_1), value is read through options
+    double dist_user_weight_;
+
+    // minimum number of iterations before cycles are detected and handled , value is read through options
+    int cycle_length_;
+
     // To enable advanced unstable stuff
     int enableAdvanced_;
 

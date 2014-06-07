@@ -101,6 +101,9 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
 {    
     //measure time
     clock_t start = clock();
+
+    // need to call setSetup twice for some reason
+    setSetup(setup_);
     if(model_->getNodeCount() || model_->getCurrentPassNumber() > 1) return 0;
     bool integerSolutionAlreadyExists = false;
 
@@ -203,6 +206,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     double alpha = 1.0;
     double phi = 0.9;
     double delta_alpha = 0.005;
+
     double objectiveScalingFactor, distanceScalingFactor; //objectiveScalingFactor and distanceScalingFactor: normalizations for the objectives
     memcpy(rounded_solution, x_ofp, numberColumns*sizeof(double));
     roundObj.round(rounded_solution);
@@ -222,11 +226,8 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     fp_utopia = l1_distance( x_sol, rounded_solution, numberIntegerColumns, integerColumns );
     minlp->eval_f( numberColumns, x_sol, true, nlp_nadir );
     
-    // TODO: read from options
-    double u1, u2 = 1;
-
-    distanceScalingFactor = u1/( fp_nadir - fp_utopia );
-    objectiveScalingFactor = u2/( nlp_nadir - nlp_utopia );
+    distanceScalingFactor = dist_user_weight_/( fp_nadir - fp_utopia );
+    objectiveScalingFactor = obj_user_weight_/( nlp_nadir - nlp_utopia );
     
     
 
@@ -475,18 +476,29 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
 void
 HeuristicOFP::registerOptions(Ipopt::SmartPtr<Bonmin::RegisteredOptions> roptions){
     roptions->SetRegisteringCategory("MINLP Heuristics", RegisteredOptions::BonminCategory);
-    roptions->AddBoundedIntegerOption("objective_feasibility_pump_objective_norm","Norm of objective feasibility pump objective function",
-                                      1, 2, 1,"");
-    roptions->setOptionExtraInfo("objective_feasibility_pump_objective_norm", 63);
+    
     roptions->AddStringOption2("heuristic_objective_feasibility_pump", "whether the heuristic objective feasibility pump should be used",
                                "no", "no", "don't use it", "yes", "use it", "");
+    roptions->AddLowerBoundedNumberOption("ofp_objective_weight","user defined weight for the original objective function",
+    							0.00001,true,1,"");
+    roptions->AddLowerBoundedNumberOption("ofp_distance_weight","user defined weight for the distance function",
+    							0.00001,true,1,"");
+    roptions->AddBoundedIntegerOption("ofp_cycle_length","minimum number of iterations needed for cycle handling",
+    								1,200, 30, "");
+
+
     roptions->setOptionExtraInfo("heuristic_objective_feasibility_pump", 63);
+    roptions->setOptionExtraInfo("ofp_objective_weight", 63);
+    roptions->setOptionExtraInfo("ofp_distance_weight", 63);
+    roptions->setOptionExtraInfo("ofp_cycle_length", 63);
 }
 
 void
-HeuristicOFP::Initialize(Ipopt::SmartPtr<Ipopt::OptionsList> options){
-    options->GetIntegerValue("feasibility_pump_objective_norm", objective_norm_, "bonmin.");
-    options->GetEnumValue("unstable_fp", enableAdvanced_, "bonmin.");
+HeuristicOFP::Initialize(Ipopt::SmartPtr<Ipopt::OptionsList> options){    
+    options->GetNumericValue("ofp_objective_weight", obj_user_weight_, "bonmin.");
+    options->GetNumericValue("ofp_distance_weight", dist_user_weight_, "bonmin.");
+    options->GetIntegerValue("ofp_cycle_length", cycle_length_, "bonmin.");
+
 }
 
 RoundingOFP::RoundingOFP(TMINLP2TNLP* minlp,
