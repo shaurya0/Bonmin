@@ -200,7 +200,6 @@ TNLP2FPNLP::eval_grad_f(Index n, const Number* x, bool new_x,
                 {
                     grad_f[inds_[i]] -= distanceScalingFactor_ * (1-alpha_);
                 }
-                std::cout << grad_f[inds_[i]] << std::endl;
             }
 
         }
