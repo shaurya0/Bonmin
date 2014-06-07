@@ -53,6 +53,7 @@
 #include "BonHeuristicRINS.hpp"
 #include "BonHeuristicLocalBranching.hpp"
 #include "BonHeuristicFPump.hpp"
+#include "BonHeuristicOFP.hpp"
 #include "BonHeuristicDiveFractional.hpp"
 #include "BonHeuristicDiveVectorLength.hpp"
 #include "BonHeuristicDiveMIPFractional.hpp"
@@ -129,6 +130,7 @@ namespace Bonmin
     HeuristicRINS::registerOptions(roptions);
     HeuristicLocalBranching::registerOptions(roptions);
     HeuristicFPump::registerOptions(roptions);
+    HeuristicOFP::registerOptions(roptions);
     HeuristicDiveFractional::registerOptions(roptions);
     HeuristicDiveVectorLength::registerOptions(roptions);
     HeuristicDiveMIPFractional::registerOptions(roptions);
@@ -539,7 +541,9 @@ namespace Bonmin
       h.id = "DiveMIPVectorLength";
       heuristics_.push_back(h);
     }
+
     Ipopt::Index doHeuristicFPump = false;
+
     if(!nonlinearSolver_->model()->hasGeneralInteger() && !options()->GetEnumValue("heuristic_feasibility_pump",doHeuristicFPump,prefix_.c_str())){
       doHeuristicFPump = true;
       std::string o_name = prefix_ + "heuristic_feasibility_pump";
@@ -552,6 +556,23 @@ namespace Bonmin
       h.id = "FPump";
       heuristics_.push_back(h);
     }
+
+    Ipopt::Index doHeuristicOFP = false;
+    if(!nonlinearSolver_->model()->hasGeneralInteger() && options()->GetEnumValue("heuristic_objective_feasibility_pump",doHeuristicFPump,prefix_.c_str()))
+    {
+      doHeuristicOFP = true;
+      std::string o_name = prefix_ + "heuristic_objective_feasibility_pump";
+      options_->SetStringValue(o_name.c_str(), "yes",true,true);
+    }
+    if(doHeuristicOFP){
+      HeuristicOFP* objective_feasibility_pump = new HeuristicOFP(this);
+      HeuristicMethod h;
+      h.heuristic = objective_feasibility_pump;
+      h.id = "OFP";
+      heuristics_.push_back(h);
+    }
+
+
 
     Ipopt::Index doFixAndSolve = false;
     options()->GetEnumValue("fix_and_solve_heuristic",doFixAndSolve,prefix_.c_str());

@@ -15,17 +15,17 @@
 
 namespace Bonmin
 {
-  /** This is an adapter class to convert an NLP to a Feasibility Pump NLP
+/** This is an adapter class to convert an NLP to a Feasibility Pump NLP
    *  by changing the objective function to the (2-norm) distance to a point.
    * The extra function is set_dist_to_point_obj(size_t n, const double *, const int *)
    */
-  class TNLP2FPNLP : public Ipopt::TNLP
-  {
-  public:
+class TNLP2FPNLP : public Ipopt::TNLP
+{
+public:
     /**@name Constructors/Destructors */
     //@{
     /** Build using tnlp as source problem.*/
-    TNLP2FPNLP(const Ipopt::SmartPtr<Ipopt::TNLP> tnlp, double objectiveScalingFactor = 1);
+    TNLP2FPNLP(const Ipopt::SmartPtr<Ipopt::TNLP> tnlp, double objectiveScalingFactor = 0.0);
 
     /** Build using tnlp as source problem and using other for all other parameters..*/
     TNLP2FPNLP(const Ipopt::SmartPtr<TNLP> tnlp, const Ipopt::SmartPtr<TNLP2FPNLP> other);
@@ -34,15 +34,15 @@ namespace Bonmin
     virtual ~TNLP2FPNLP();
     //@}
     void use(Ipopt::SmartPtr<TNLP> tnlp){
-      tnlp_ = GetRawPtr(tnlp);}
+        tnlp_ = GetRawPtr(tnlp);}
     /**@name Methods to select the objective function and extra constraints*/
     //@{
     /// Flag to indicate that we want to use the feasibility pump objective
-    void set_use_feasibility_pump_objective(bool use_feasibility_pump_objective) 
+    void set_use_feasibility_pump_objective(bool use_feasibility_pump_objective)
     { use_feasibility_pump_objective_ = use_feasibility_pump_objective; }
 
     /** Flag to indicate that we want to use a cutoff constraint
-     *	This constraint has the form f(x) <= (1-epsilon) f(x') */ 
+     *	This constraint has the form f(x) <= (1-epsilon) f(x') */
     void set_use_cutoff_constraint(bool use_cutoff_constraint)
     { use_cutoff_constraint_ = use_cutoff_constraint; }
 
@@ -59,7 +59,7 @@ namespace Bonmin
     /// Set the rhs of the local branching constraint
     void set_rhs_local_branching_constraint(double rhs_local_branching_constraint)
     { assert(rhs_local_branching_constraint >= 0);
-      rhs_local_branching_constraint_ = rhs_local_branching_constraint; }
+        rhs_local_branching_constraint_ = rhs_local_branching_constraint; }
     //@}
 
     /**@name Methods to change the objective function*/
@@ -72,88 +72,88 @@ namespace Bonmin
      */
     void set_dist_to_point_obj(size_t n, const Ipopt::Number * vals, const Ipopt::Index * inds);
 
-     /** Set the value for alpha*/
-     void setAlpha(double alpha){
-       assert(alpha >= 0. && alpha <= 1.);
-       alpha_ = alpha;}
-     /** Set the value for simgma */
-     void setNorm(int norm){
-       assert(norm >0 && norm < 3);
-       norm_ = norm;}
+    /** Set the value for alpha*/
+    void setAlpha(double alpha){
+        assert(alpha >= 0. && alpha <= 1.);
+        alpha_ = alpha;}
+    /** Set the value for simgma */
+    void setNorm(int norm){
+        assert(norm >0 && norm < 3);
+        norm_ = norm;}
     //@}
 
     /**@name methods to gather information about the NLP */
     //@{
     /** get info from nlp_ and add hessian information */
     virtual bool get_nlp_info(Ipopt::Index& n, Ipopt::Index& m, Ipopt::Index& nnz_jac_g,
-        Ipopt::Index& nnz_h_lag, Ipopt::TNLP::IndexStyleEnum& index_style);
+                              Ipopt::Index& nnz_h_lag, Ipopt::TNLP::IndexStyleEnum& index_style);
 
     /** This call is just passed onto tnlp_
      */
     virtual bool get_bounds_info(Ipopt::Index n, Ipopt::Number* x_l, Ipopt::Number* x_u,
-				 Ipopt::Index m, Ipopt::Number* g_l, Ipopt::Number* g_u);
+                                 Ipopt::Index m, Ipopt::Number* g_l, Ipopt::Number* g_u);
 
     /** Passed onto tnlp_
      */
     virtual bool get_starting_point(Ipopt::Index n, bool init_x, Ipopt::Number* x,
-        bool init_z, Ipopt::Number* z_L, Ipopt::Number* z_U,
-        Ipopt::Index m, bool init_alpha,
-        Ipopt::Number* alpha)
+                                    bool init_z, Ipopt::Number* z_L, Ipopt::Number* z_U,
+                                    Ipopt::Index m, bool init_alpha,
+                                    Ipopt::Number* alpha)
     {
-      int m2 = m;
-      if(use_cutoff_constraint_) {
-        m2--;
-        if(alpha!=NULL)alpha[m2] = 0;
-      }
-      if(use_local_branching_constraint_) {
-        m2--;
-        if(alpha!= NULL)alpha[m2] = 0;
-      }
-      int ret_code = tnlp_->get_starting_point(n, init_x, x,
-          init_z, z_L, z_U, m2, init_alpha, alpha);
-      return ret_code;
+        int m2 = m;
+        if(use_cutoff_constraint_) {
+            m2--;
+            if(alpha!=NULL)alpha[m2] = 0;
+        }
+        if(use_local_branching_constraint_) {
+            m2--;
+            if(alpha!= NULL)alpha[m2] = 0;
+        }
+        int ret_code = tnlp_->get_starting_point(n, init_x, x,
+                                                 init_z, z_L, z_U, m2, init_alpha, alpha);
+        return ret_code;
     }
 
     /** overloaded to return the value of the objective function */
     virtual bool eval_f(Ipopt::Index n, const Ipopt::Number* x, bool new_x,
-        Ipopt::Number& obj_value);
+                        Ipopt::Number& obj_value);
 
     /** overload this method to return the vector of the gradient of
      *  the objective w.r.t. x */
     virtual bool eval_grad_f(Ipopt::Index n, const Ipopt::Number* x, bool new_x,
-        Ipopt::Number* grad_f);
+                             Ipopt::Number* grad_f);
 
     /** overload to return the values of the left-hand side of the
         constraints */
     virtual bool eval_g(Ipopt::Index n, const Ipopt::Number* x, bool new_x,
-			Ipopt::Index m, Ipopt::Number* g);
+                        Ipopt::Index m, Ipopt::Number* g);
 
     /** overload to return the jacobian of g */
     virtual bool eval_jac_g(Ipopt::Index n, const Ipopt::Number* x, bool new_x,
-			    Ipopt::Index m, Ipopt::Index nele_jac, Ipopt::Index* iRow,
-			    Ipopt::Index *jCol, Ipopt::Number* values);
+                            Ipopt::Index m, Ipopt::Index nele_jac, Ipopt::Index* iRow,
+                            Ipopt::Index *jCol, Ipopt::Number* values);
 
     /** Evaluate the modified Hessian of the Lagrangian*/
     virtual bool eval_h(Ipopt::Index n, const Ipopt::Number* x, bool new_x,
-        Ipopt::Number obj_factor, Ipopt::Index m, const Ipopt::Number* alpha,
-        bool new_alpha, Ipopt::Index nele_hess,
-        Ipopt::Index* iRow, Ipopt::Index* jCol, Ipopt::Number* values);
+                        Ipopt::Number obj_factor, Ipopt::Index m, const Ipopt::Number* alpha,
+                        bool new_alpha, Ipopt::Index nele_hess,
+                        Ipopt::Index* iRow, Ipopt::Index* jCol, Ipopt::Number* values);
     //@}
 
     /** @name Solution Methods */
     //@{
     /** This method is called when the algorithm is complete so the TNLP can store/write the solution */
     virtual void finalize_solution(Ipopt::SolverReturn status,
-        Ipopt::Index n, const Ipopt::Number* x, const Ipopt::Number* z_L, const Ipopt::Number* z_U,
-        Ipopt::Index m, const Ipopt::Number* g, const Ipopt::Number* alpha,
-        Ipopt::Number obj_value,
-        const Ipopt::IpoptData* ip_data,
-        Ipopt::IpoptCalculatedQuantities* ip_cq);
+                                   Ipopt::Index n, const Ipopt::Number* x, const Ipopt::Number* z_L, const Ipopt::Number* z_U,
+                                   Ipopt::Index m, const Ipopt::Number* g, const Ipopt::Number* alpha,
+                                   Ipopt::Number obj_value,
+                                   const Ipopt::IpoptData* ip_data,
+                                   Ipopt::IpoptCalculatedQuantities* ip_cq);
     //@}
 
     virtual bool get_variables_linearity(Ipopt::Index n, LinearityType* var_types)
     {
-      return tnlp_->get_variables_linearity(n, var_types);;
+        return tnlp_->get_variables_linearity(n, var_types);;
     }
 
     /** overload this method to return the constraint linearity.
@@ -161,26 +161,28 @@ namespace Bonmin
      *  just return false and does not fill the array).*/
     virtual bool get_constraints_linearity(Ipopt::Index m, LinearityType* const_types)
     {
-      int m2 = m;
-      if(use_cutoff_constraint_) {
-        m2--;
-        const_types[m2] = Ipopt::TNLP::NON_LINEAR;
-      } 
-      if(use_local_branching_constraint_) {
-        m2--;
-        const_types[m2] = Ipopt::TNLP::LINEAR;
-      }
-      return tnlp_->get_constraints_linearity(m2, const_types);
+        int m2 = m;
+        if(use_cutoff_constraint_)
+        {
+            m2--;
+            const_types[m2] = Ipopt::TNLP::NON_LINEAR;
+        }
+        if(use_local_branching_constraint_) 
+        {
+            m2--;
+            const_types[m2] = Ipopt::TNLP::LINEAR;
+        }
+        return tnlp_->get_constraints_linearity(m2, const_types);
     }
     /** @name Scaling of the objective function */
     //@{
-    void setObjectiveScaling(double value)
+    void setObjectiveScalingFactor(double value)
     {
-      objectiveScalingFactor_ = value;
+        objectiveScalingFactor_ = value;
     }
-    double getObjectiveScaling() const
+    double getObjectiveScalingFactor() const
     {
-      return objectiveScalingFactor_;
+        return objectiveScalingFactor_;
     }
 
     void setDistanceScalingFactor(double value)
@@ -193,7 +195,13 @@ namespace Bonmin
         return distanceScalingFactor_;
     }
 
-  private:
+    double getDistToPoint() const
+    {
+        // TODO : Implement function
+        return 0.0;
+    }
+
+private:
     /** @name Internal methods to help compute the distance, its gradient and hessian */
     //@{
     /** Compute the norm-2 distance to the current point to which distance is minimized. */
@@ -227,13 +235,13 @@ namespace Bonmin
     /// Values of the point to which we separate (if x is the point vals_[i] should be x[inds_[i]] )
     vector<Ipopt::Number> vals_;
     /** value for the convex combination to take between original objective and distance function.*/
-      
+
     double alpha_;
 
     /** Scaling for the original objective.*/
     
-   /** Norm to use (L_1 or L_2).*/
-   int norm_;
+    /** Norm to use (L_1 or L_2).*/
+    int norm_;
     //@}
 
 
@@ -249,8 +257,8 @@ namespace Bonmin
     bool use_feasibility_pump_objective_;
 
     /** Flag to indicate that we want to use a cutoff constraint
-     *	This constraint has the form f(x) <= (1-epsilon) f(x') */ 
-    bool use_cutoff_constraint_;    
+     *	This constraint has the form f(x) <= (1-epsilon) f(x') */
+    bool use_cutoff_constraint_;
 
     /// Flag to indicate that we want to use a local branching constraint
     bool use_local_branching_constraint_;
@@ -268,7 +276,7 @@ namespace Bonmin
     /// Ipopt::Index style (C++ or Fortran)
     Ipopt::TNLP::IndexStyleEnum index_style_;
 
-  };
+};
 
 } // namespace Ipopt
 

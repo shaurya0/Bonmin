@@ -148,7 +148,7 @@ namespace Bonmin
     std::map< int,std::vector<int> > sos_constraints;
 
     // Key: variable index. Value : row index of SOS1 constraint in which the variable appears
-    std::map< int, int > sos_var_row;
+    std::map<int, int> sos_var_row;
 
     // Sorted indices of variables which appear in SOS1 constraints
     std::vector<int> sos_columns;

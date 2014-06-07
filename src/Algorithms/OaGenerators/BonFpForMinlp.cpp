@@ -139,7 +139,7 @@ namespace Bonmin
          x_bar[i] = colsol[indices[i]];
       }
 
-      double dist = nlp_->solveFeasibilityProblem(indices.size(), x_bar(), indices(), 1, 0, 2);
+      double dist = nlp_->solveFeasibilityProblem(indices.size(), x_bar(), indices(),2);
 
       handler_->message(FP_DISTANCE, messages_) 
       <<dist<<CoinMessageEol;
