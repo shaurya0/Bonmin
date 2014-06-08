@@ -32,19 +32,19 @@ private:
 
 HeuristicOFP::HeuristicOFP()
     :
-
       CbcHeuristic(),
       setup_(NULL),
       objective_norm_(1),
-      enableAdvanced_(false)
+      obj_user_weight_(1.0),
+      dist_user_weight_(1.0),
+      delta_alpha_(0.005)
 {}
 
 HeuristicOFP::HeuristicOFP(BonminSetup * setup)
     :
       CbcHeuristic(),
       setup_(setup),
-      objective_norm_(1),
-      enableAdvanced_(false)
+      objective_norm_(1)
 {
     Initialize(setup->options());
 }
@@ -54,7 +54,9 @@ HeuristicOFP::HeuristicOFP(const HeuristicOFP &copy)
       CbcHeuristic(copy),
       setup_(copy.setup_),
       objective_norm_(copy.objective_norm_),
-      enableAdvanced_(copy.enableAdvanced_)
+      obj_user_weight_(copy.obj_user_weight_),
+      dist_user_weight_(copy.dist_user_weight_),
+      delta_alpha_(copy.delta_alpha_)
 {    
 }
 
@@ -65,7 +67,9 @@ HeuristicOFP::operator=(const HeuristicOFP & rhs)
         CbcHeuristic::operator=(rhs);
         setup_ = rhs.setup_;
         objective_norm_ = rhs.objective_norm_;
-        enableAdvanced_ = rhs.enableAdvanced_;
+        obj_user_weight_ = rhs.obj_user_weight_;
+        dist_user_weight_ = rhs.dist_user_weight_;
+        delta_alpha_ = rhs.delta_alpha_;
     }
     return *this;
 }
@@ -110,8 +114,6 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     if(model_->getSolutionCount()) {
         //      bestSolutionValue = model_->getObjValue();
         integerSolutionAlreadyExists = true;
-        if(!enableAdvanced_)
-            return 0;
         assert(solutionValue < 1.0e50);
     }
     const int maxNumberIterations = 200;
@@ -205,7 +207,6 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     //parameters for objective FP
     double alpha = 1.0;
     double phi = 0.9;
-    double delta_alpha = 0.005;
 
     double objectiveScalingFactor, distanceScalingFactor; //objectiveScalingFactor and distanceScalingFactor: normalizations for the objectives
     memcpy(rounded_solution, x_ofp, numberColumns*sizeof(double));
@@ -347,7 +348,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
             bool matched = false;
             for (int k = numberOldSolutionsStored-1; k > 0; k--)
             {
-                if (alpha_t[k] - alpha <= delta_alpha && ofp_iteration > numberOldSolutionsStored )
+                if (alpha_t[k] - alpha <= delta_alpha_ && ofp_iteration > numberOldSolutionsStored )
                     sufficient_alpha_decrease = true;
                 else
                     continue;
@@ -429,10 +430,11 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     }
     clock_t end = clock();
     float seconds = (float)(end-start) / CLOCKS_PER_SEC;
-    std::cout << "TOTAL TIME == " << seconds << std::endl;
+    std::cout << "------------ OFP results ------------" << std::endl;
+    std::cout << "Total time == " << seconds << std::endl;
     std::cout << "Iterations == " << ofp_iteration << std::endl;
-    std::cout << "Stall count == " << stall_counter << std::endl;
-    std::cout << "Cycle count == " << cycle_counter << std::endl;
+//    std::cout << "Stall count == " << stall_counter << std::endl;
+//    std::cout << "Cycle count == " << cycle_counter << std::endl;
     nlp->initialSolve();
 
     bool feasible = true;
@@ -497,8 +499,10 @@ void
 HeuristicOFP::Initialize(Ipopt::SmartPtr<Ipopt::OptionsList> options){    
     options->GetNumericValue("ofp_objective_weight", obj_user_weight_, "bonmin.");
     options->GetNumericValue("ofp_distance_weight", dist_user_weight_, "bonmin.");
-    options->GetIntegerValue("ofp_cycle_length", cycle_length_, "bonmin.");
 
+    int cycle_length;
+    options->GetIntegerValue("ofp_cycle_length", cycle_length, "bonmin.");
+    delta_alpha_ = 0.1*std::pow(0.9,cycle_length-1);
 }
 
 RoundingOFP::RoundingOFP(TMINLP2TNLP* minlp,

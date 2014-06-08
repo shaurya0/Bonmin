@@ -519,7 +519,7 @@ namespace Bonmin
     }
 
     Ipopt::Index doHeuristicDiveMIPFractional = false;
-    if(!options()->GetEnumValue("heuristic_dive_MIP_fractional",doHeuristicDiveMIPFractional,prefix_.c_str())){
+    if(options()->GetEnumValue("heuristic_dive_MIP_fractional",doHeuristicDiveMIPFractional,prefix_.c_str())){
       doHeuristicDiveMIPFractional = true;
       std::string o_name = prefix_ + "heuristic_dive_MIP_fractional";
       options_->SetStringValue(o_name.c_str(), "yes",true,true);

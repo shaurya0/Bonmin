@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by Qt Creator 2.4.1, 2014-06-07T13:03:35. -->
+<!-- Written by Qt Creator 2.4.1, 2014-06-08T02:41:13. -->
 <qtcreator>
  <data>
   <variable>GenericProjectManager.GenericProject.Toolchain</variable>
@@ -176,7 +176,7 @@
      <value type="int">13</value>
      <value type="int">14</value>
     </valuelist>
-    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Arguments">/home/shaurya/Development/Bonmin-1.7/debug/bin/BatchS101006M.nl 'bonmin.heuristic_objective_feasibility_pump yes'</value>
+    <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Arguments">/home/shaurya/Development/Bonmin-1.7/debug/bin/mod1.nl 'bonmin.heuristic_objective_feasibility_pump yes bonmin.ofp_cycle_length 1'</value>
     <value type="int" key="ProjectExplorer.CustomExecutableRunConfiguration.BaseEnvironmentBase">2</value>
     <value type="QString" key="ProjectExplorer.CustomExecutableRunConfiguration.Executable">/home/shaurya/Development/Bonmin-1.7/debug/bin/bonmin</value>
     <value type="bool" key="ProjectExplorer.CustomExecutableRunConfiguration.UseTerminal">false</value>

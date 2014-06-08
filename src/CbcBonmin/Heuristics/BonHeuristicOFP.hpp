@@ -76,14 +76,8 @@ namespace Bonmin
     // distance function user weight (u_1), value is read through options
     double dist_user_weight_;
 
-    // minimum number of iterations before cycles are detected and handled , value is read through options
-    int cycle_length_;
-
-    // To enable advanced unstable stuff
-    int enableAdvanced_;
-
-    // No good cuts possibly
-    OsiCuts nogood;
+    // geometric reduction criterion for cycle handling to start
+    double delta_alpha_;
 
   };
 
