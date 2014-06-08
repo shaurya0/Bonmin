@@ -330,8 +330,6 @@ HeuristicFPump::solution(double &solutionValue, double *betterSolution)
             obj_nlp = nlp->solveFeasibilityProblem(numberIntegerColumns,
                                                    x_bar,indexes_x_bar,objective_norm_);
         }
-
-        std::cout<< obj_nlp << std::endl;
 #ifdef DEBUG_BON_HEURISTIC_FPUMP
         cout<<"obj_nlp= "<<obj_nlp<<endl;
 #endif
