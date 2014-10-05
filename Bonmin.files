@@ -195,3 +195,5 @@
 /home/shaurya/Development/Bonmin-1.7/Bonmin/ltmain.sh
 src/CbcBonmin/Heuristics/BonHeuristicOFP.hpp
 src/CbcBonmin/Heuristics/BonHeuristicOFP.cpp
+src/Interfaces/BonStdInterfaceTMINLP.hpp
+src/Interfaces/BonStdInterfaceTMINLP.cpp
