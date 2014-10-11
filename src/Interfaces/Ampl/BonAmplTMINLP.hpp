@@ -309,7 +309,7 @@ namespace Bonmin
     TMINLP::Convexity * constraintsConvexities_;
 
     /** Store onoff information.*/
-    vector<int> c_extra_id_; 
+    vector<int> c_extra_id_;
 
     /** Ipopt::Number of nonConvex constraints.*/
     int numberNonConvex_;

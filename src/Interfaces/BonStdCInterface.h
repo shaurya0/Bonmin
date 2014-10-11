@@ -18,6 +18,19 @@ extern "C"
 	identical with what is defined in Common/IpTypes.hpp */
 	typedef int Int;
 
+	typedef enum
+	{
+		CONTINUOUS,
+		BINARY,
+		INTEGER
+	} VariableType;
+
+	typedef enum
+	{
+		LINEAR,
+		NON_LINEAR
+	} LinearityType;
+
 	struct BonminProblemInfo;
 
 	typedef struct BonminProblemInfo* BonminProblem;
@@ -34,6 +47,12 @@ extern "C"
 	/** A pointer for anything that is to be passed between the called
 	*  and individual callback function */
 	typedef void * UserDataPtr;
+
+	typedef Bool (*Get_Variables_Types_CB)( Index n, VariableType* var_types );
+
+	typedef Bool (*Get_Variables_Linearity_CB)( Index n, LinearityType* var_types );
+
+	typedef Bool (*Get_Constraints_Linearity_CB)( Index n, LinearityType* const_types );
 
 	/** Type defining the callback function for evaluating the value of
 	*  the objective function.  Return value should be set to false if
@@ -61,10 +80,6 @@ extern "C"
 	                            Index *iRow, Index *jCol, Number *values,
 	                            UserDataPtr user_data);
 
-	typedef Bool (*Eval_Gi_CB)(Index n, Number* x, Bool new_x, Index i, Number* gi, UserDataPtr user_data);
-
-	typedef Bool (*Eval_Grad_Gi_CB)(Index n, Number* x, Bool new_x, Index i, Index* nele_grad_gi, Index* jCol, Number* values, UserDataPtr user_data);
-
 	/** Type defining the callback function for evaluating the Hessian of
 	*  the Lagrangian function.  Return value should be set to false if
 	*  there was a problem doing the evaluation. */
@@ -80,13 +95,13 @@ extern "C"
 	*  user-defined output.  It also gives the user a way to terminate
 	*  the optimization prematurely.  If this method returns false,
 	*  Ipopt will terminate the optimization. */
-	// typedef Bool (*Intermediate_CB)(Index alg_mod, /* 0 is regular, 1 is resto */
-	// 			  Index iter_count, Number obj_value,
-	// 			  Number inf_pr, Number inf_du,
-	// 			  Number mu, Number d_norm,
-	// 			  Number regularization_size,
-	// 			  Number alpha_du, Number alpha_pr,
-	// 			  Index ls_trials, UserDataPtr user_data);
+	typedef Bool (*Intermediate_CB)(Index alg_mod, /* 0 is regular, 1 is resto */
+				  Index iter_count, Number obj_value,
+				  Number inf_pr, Number inf_du,
+				  Number mu, Number d_norm,
+				  Number regularization_size,
+				  Number alpha_du, Number alpha_pr,
+				  Index ls_trials, UserDataPtr user_data);
 
 	BonminProblem CreateBonminProblem(
 				Index n
@@ -102,9 +117,7 @@ extern "C"
 				, Eval_G_CB eval_g
 				, Eval_Grad_F_CB eval_grad_f
 				, Eval_Jac_G_CB eval_jac_g
-				, Eval_Gi_CB eval_gi
-				, Eval_Grad_Gi_CB eval_grad_gi
-				, Eval_H_CB eval_h )
+				, Eval_H_CB eval_h );
 
 
 	/** Method for freeing a previously created BonminProblem.  After
@@ -156,35 +169,37 @@ extern "C"
 	  specified outcome of the optimization procedure (e.g., success,
 	  failure etc).
 	*/
-	enum ApplicationReturnStatus BonminSolve(
-	  BonminProblem bonmin_problem
-	                     /** Problem that is to be optimized.  Ipopt
-	                         will use the options previously specified with
-	                         AddIpoptOption (etc) for this problem. */
-	, Number* x          /** Input:  Starting point
-	                         Output: Optimal solution */
-	, Number* g          /** Values of constraint at final point
-	                         (output only - ignored if set to NULL) */
-	, Number* obj_val    /** Final value of objective function
-	                         (output only - ignored if set to NULL) */
-	, Number* mult_g     /** Input: Initial values for the constraint
-	                                multipliers (only if warm start option
-	                                is chosen)
-	                         Output: Final multipliers for constraints
-	                                 (ignored if set to NULL) */
-	, Number* mult_x_L   /** Input: Initial values for the multipliers for
-	                                lower variable bounds (only if warm start
-	                                option is chosen)
-	                         Output: Final multipliers for lower variable
-	                                 bounds (ignored if set to NULL) */
-	, Number* mult_x_U   /** Input: Initial values for the multipliers for
-	                                upper variable bounds (only if warm start
-	                                option is chosen)
-	                         Output: Final multipliers for upper variable
-	                                 bounds (ignored if set to NULL) */
-	, UserDataPtr user_data
-	                     /** Pointer to user data.  This will be
-	                         passed unmodified to the callback
-	                         functions. */
-	);
+	// enum ApplicationReturnStatus BonminSolve(
+	//   BonminProblem bonmin_problem
+	//                      /** Problem that is to be optimized.  Ipopt
+	//                          will use the options previously specified with
+	//                          AddIpoptOption (etc) for this problem. */
+	// , Number* x          /** Input:  Starting point
+	//                          Output: Optimal solution */
+	// , Number* g          /** Values of constraint at final point
+	//                          (output only - ignored if set to NULL) */
+	// , Number* obj_val    /** Final value of objective function
+	//                          (output only - ignored if set to NULL) */
+	// , Number* mult_g     * Input: Initial values for the constraint
+	//                                 multipliers (only if warm start option
+	//                                 is chosen)
+	//                          Output: Final multipliers for constraints
+	//                                  (ignored if set to NULL)
+	// , Number* mult_x_L   /** Input: Initial values for the multipliers for
+	//                                 lower variable bounds (only if warm start
+	//                                 option is chosen)
+	//                          Output: Final multipliers for lower variable
+	//                                  bounds (ignored if set to NULL) */
+	// , Number* mult_x_U   /** Input: Initial values for the multipliers for
+	//                                 upper variable bounds (only if warm start
+	//                                 option is chosen)
+	//                          Output: Final multipliers for upper variable
+	//                                  bounds (ignored if set to NULL) */
+	// , UserDataPtr user_data
+	//                      /** Pointer to user data.  This will be
+	//                          passed unmodified to the callback
+	//                          functions. */
+	// );
 }
+
+#endif
