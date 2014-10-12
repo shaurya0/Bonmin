@@ -197,3 +197,5 @@ src/CbcBonmin/Heuristics/BonHeuristicOFP.hpp
 src/CbcBonmin/Heuristics/BonHeuristicOFP.cpp
 src/Interfaces/BonStdInterfaceTMINLP.hpp
 src/Interfaces/BonStdInterfaceTMINLP.cpp
+src/Interfaces/BonStdCInterface.h
+src/Interfaces/BonStdCInterface.cpp

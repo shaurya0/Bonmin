@@ -3,6 +3,9 @@
 
 #include "BonTMINLP.hpp"
 #include "BonStdCInterface.h"
+#include "IpJournalist.hpp"
+#include "IpException.hpp"
+#include "IpSmartPtr.hpp"
 
 namespace Bonmin
 {
@@ -27,10 +30,9 @@ namespace Bonmin
                          Eval_H_CB eval_h,
                          VariableType* var_types,
                          LinearityType* var_linearity_types,
-                         ConstraintsLinearityType* constraint_linearity_types,
-                         BranchingInfo branch,
-                         SosInfo sos,
-                         PerturbInfo perturb_info,
+                         LinearityType* constraint_linearity_types,
+                         // BranchingInfo branch,
+                         // SosInfo sos,
                          Intermediate_CB intermediate_cb,
                          Number* x_sol,
                          Number* z_L_sol,
@@ -94,20 +96,9 @@ namespace Bonmin
 
         virtual void finalize_solution(TMINLP::SolverReturn status, Ipopt::Index n, const Ipopt::Number* x, Ipopt::Number obj_value){}
 
-        virtual const BranchingInfo * branchingInfo() const
-        {
-            return &branch_;
-        }
-
-        virtual const SosInfo * sosConstraints() const
-        {
-            return &sos_;
-        }
-
-        virtual const PerturbInfo* perturbInfo() const
-        {
-            return &perturb_info_;
-        }
+        // TODO
+        virtual const SosInfo * sosConstraints() const{return NULL;}
+        virtual const BranchingInfo* branchingInfo() const{return NULL;}
 
 
     private:
@@ -159,7 +150,9 @@ namespace Bonmin
         Eval_H_CB eval_h_;
 
         VariableType* var_types_;
+
         LinearityType* var_linearity_types_;
+
         LinearityType* constraint_linearity_types_;
 
         /** Pointer to intermediate callback function giving control to user */
@@ -170,9 +163,6 @@ namespace Bonmin
 
         /** Storage of sos constraints */
         SosInfo sos_;
-
-        /** Storage for perturbation radii */
-        PerturbInfo perturb_info_;
 
         /** Pointer to user data */
         UserDataPtr user_data_;

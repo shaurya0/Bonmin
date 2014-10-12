@@ -21,9 +21,8 @@ namespace Bonmin
 	                VariableType* var_types,
 	                LinearityType* var_linearity_types,
 	                LinearityType* constraint_linearity_types,
-	                BranchingInfo branch,
-	                SosInfo sos,
-	                PerturbInfo perturb_info,
+	                // BranchingInfo branch,
+	                // SosInfo sos,
 	                Intermediate_CB intermediate_cb,
 	                Number* x_sol,
 	                Number* z_L_sol,
@@ -58,9 +57,8 @@ namespace Bonmin
 					var_types_(var_types),
 					var_linearity_types_(var_linearity_types),
 					constraint_linearity_types_(constraint_linearity_types),
-					branch_(branch),
-					sos_(sos),
-					perturb_info_(perturb_info),
+					// branch_(branch),
+					// sos_(sos),
 					intermediate_cb_(intermediate_cb),
 					user_data_(user_data),
 					obj_scaling_(obj_scaling),
@@ -168,19 +166,19 @@ namespace Bonmin
 	bool get_variables_types(Index n, VariableType* var_types)
 	{
 		DBG_ASSERT(n==n_var_);
-
+		memcpy( var_types, var_types_, n*sizeof( VariableType ) );
 	}
 
-	bool get_variables_linearity(Index n, LinearityType* var_types)
+	bool get_variables_linearity(Index n, LinearityType* var_linearity_types)
 	{
 		DBG_ASSERT(n==n_var_);
-
+		memcpy( var_linearity_types, var_linearity_types_, n*sizeof( LinearityType ) );
 	}
 
-	bool get_constraints_linearity(Index m, LinearityType* const_types)
+	bool get_constraints_linearity(Index m, LinearityType* constraint_linearity_types)
 	{
 		DBG_ASSERT(m==n_con_);
-
+		memcpy( constraint_linearity_types_, constraint_linearity_types__, n*sizeof( LinearityType ) );
 	}
 
 	bool StdInterfaceTMINLP::get_starting_point(Index n, bool init_x,
