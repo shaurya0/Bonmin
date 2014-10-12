@@ -1,5 +1,6 @@
 #include "BonStdInterfaceTMINLP.hpp"
 
+using namespace Ipopt;
 namespace Bonmin
 {
 	StdInterfaceTMINLP::StdInterfaceTMINLP(Index n_var,
@@ -19,11 +20,11 @@ namespace Bonmin
 	                Eval_Jac_G_CB eval_jac_g,
 	                Eval_H_CB eval_h,
 	                VariableType* var_types,
-	                LinearityType* var_linearity_types,
-	                LinearityType* constraint_linearity_types,
+	                TNLP::LinearityType* var_linearity_types,
+	                TNLP::LinearityType* constraint_linearity_types,
 	                // BranchingInfo branch,
 	                // SosInfo sos,
-	                Intermediate_CB intermediate_cb,
+	                // Intermediate_CB intermediate_cb,
 	                Number* x_sol,
 	                Number* z_L_sol,
 	                Number* z_U_sol,
@@ -31,9 +32,9 @@ namespace Bonmin
 	                Number* lam_sol,
 	                Number* obj_sol,
 	                UserDataPtr user_data,
-	                Number obj_scaling=1,
-	                const Number* x_scaling = NULL,
-	                const Number* g_scaling = NULL)
+	                Number obj_scaling,
+	                const Number* x_scaling,
+	                const Number* g_scaling)
 					:
 					TMINLP(),
 					n_var_(n_var),
@@ -59,7 +60,7 @@ namespace Bonmin
 					constraint_linearity_types_(constraint_linearity_types),
 					// branch_(branch),
 					// sos_(sos),
-					intermediate_cb_(intermediate_cb),
+					// intermediate_cb_(intermediate_cb),
 					user_data_(user_data),
 					obj_scaling_(obj_scaling),
 					x_scaling_(NULL),
@@ -99,22 +100,22 @@ namespace Bonmin
 		delete [] g_scaling_;
 	}
 
-	bool StdInterfaceTMINLP::get_nlp_info(Index& n, Index& m, Index& nnz_jac_g,
-			Index& nnz_h_lag, IndexStyleEnum& index_style)
+
+
+	bool StdInterfaceTMINLP::get_nlp_info(Index& n, Index& m, Index& nnz_jac_g, Index& nnz_h_lag, TNLP::IndexStyleEnum& index_style)
 	{
 		n = n_var_; // # of variables (variable types have been asserted in the constructor
 		m = n_con_; // # of constraints
 		nnz_jac_g = nele_jac_; // # of non-zeros in the jacobian
 		nnz_h_lag = nele_hess_; // # of non-zeros in the hessian
 
-		index_style = (index_style_ == 0) ? C_STYLE : FORTRAN_STYLE;
+		index_style = (index_style_ == 0) ? TNLP::C_STYLE : TNLP::FORTRAN_STYLE;
 
 		return true;
 	}
 
 
-	bool StdInterfaceTMINLP::get_bounds_info(Index n, Number* x_l, Number* x_u,
-		Index m, Number* g_l, Number* g_u)
+	bool StdInterfaceTMINLP::get_bounds_info(Index n, Number* x_l, Number* x_u, Index m, Number* g_l, Number* g_u)
 	{
 		DBG_ASSERT(n == n_var_);
 		DBG_ASSERT(m == n_con_);
@@ -163,29 +164,28 @@ namespace Bonmin
 		return true;
 	}
 
-	bool get_variables_types(Index n, VariableType* var_types)
+	bool StdInterfaceTMINLP::get_variables_types(Index n, VariableType* var_types)
 	{
 		DBG_ASSERT(n==n_var_);
 		memcpy( var_types, var_types_, n*sizeof( VariableType ) );
+		return true;
 	}
 
-	bool get_variables_linearity(Index n, LinearityType* var_linearity_types)
+	bool StdInterfaceTMINLP::get_variables_linearity(Index n, TNLP::LinearityType* var_linearity_types)
 	{
 		DBG_ASSERT(n==n_var_);
-		memcpy( var_linearity_types, var_linearity_types_, n*sizeof( LinearityType ) );
+		memcpy( var_linearity_types, var_linearity_types_, n*sizeof( TNLP::LinearityType ) );
+		return true;
 	}
 
-	bool get_constraints_linearity(Index m, LinearityType* constraint_linearity_types)
+	bool StdInterfaceTMINLP::get_constraints_linearity(Index m, TNLP::LinearityType* constraint_linearity_types)
 	{
 		DBG_ASSERT(m==n_con_);
-		memcpy( constraint_linearity_types_, constraint_linearity_types__, n*sizeof( LinearityType ) );
+		memcpy( constraint_linearity_types, constraint_linearity_types_, m*sizeof( TNLP::LinearityType ) );
+		return true;
 	}
 
-	bool StdInterfaceTMINLP::get_starting_point(Index n, bool init_x,
-		Number* x, bool init_z,
-		Number* z_L, Number* z_U,
-		Index m, bool init_lambda,
-		Number* lambda)
+	bool StdInterfaceTMINLP::get_starting_point(Index n, bool init_x, Number* x, bool init_z, Number* z_L, Number* z_U, Index m, bool init_lambda, Number* lambda)
 	{
 		bool retval=true;
 
@@ -321,22 +321,40 @@ namespace Bonmin
 		return (retval!=0);
 	}
 
-	bool StdInterfaceTMINLP::intermediate_callback(AlgorithmMode mode,
-		Index iter, Number obj_value,
-		Number inf_pr, Number inf_du,
-		Number mu, Number d_norm,
-		Number regularization_size,
-		Number alpha_du, Number alpha_pr,
-		Index ls_trials,
-		const IpoptData* ip_data,
-		IpoptCalculatedQuantities* ip_cq)
+	void StdInterfaceTMINLP::apply_new_x(bool new_x, Index n, const Number* x)
 	{
-		Bool retval = 1;
-		if (intermediate_cb_) {
-			retval = (*intermediate_cb_)((Index)mode, iter, obj_value, inf_pr, inf_du,
-				mu, d_norm, regularization_size, alpha_du,
-				alpha_pr, ls_trials, user_data_);
+		if (new_x)
+		{
+			//copy the data to the non_const_x_
+			if (!non_const_x_)
+			{
+				non_const_x_ = new Number[n];
+			}
+
+			DBG_ASSERT(x && "x is NULL");
+			for (Index i=0; i<n; i++)
+			{
+				non_const_x_[i] = x[i];
+			}
 		}
-		return (retval!=0);
 	}
+
+	// bool StdInterfaceTMINLP::intermediate_callback(AlgorithmMode mode,
+	// 	Index iter, Number obj_value,
+	// 	Number inf_pr, Number inf_du,
+	// 	Number mu, Number d_norm,
+	// 	Number regularization_size,
+	// 	Number alpha_du, Number alpha_pr,
+	// 	Index ls_trials,
+	// 	const IpoptData* ip_data,
+	// 	IpoptCalculatedQuantities* ip_cq)
+	// {
+	// 	Bool retval = 1;
+	// 	if (intermediate_cb_) {
+	// 		retval = (*intermediate_cb_)((Index)mode, iter, obj_value, inf_pr, inf_du,
+	// 			mu, d_norm, regularization_size, alpha_du,
+	// 			alpha_pr, ls_trials, user_data_);
+	// 	}
+	// 	return (retval!=0);
+	// }
 }

@@ -2,7 +2,7 @@
 # All Rights Reserved.
 # This file is distributed under the Common Public License.
 
-## $Id: Makefile.am 2092 2013-12-16 10:58:03Z stefan $
+## $Id$
 
 # Author:  Andreas Waechter           IBM    2006-04-13
 
@@ -25,22 +25,21 @@ endif
 noinst_LTLIBRARIES = libbonmininterfaces.la
 # List all source files, including headers
 libbonmininterfaces_la_SOURCES = \
-        BonAuxInfos.cpp BonAuxInfos.hpp \
+    BonAuxInfos.cpp BonAuxInfos.hpp \
 	BonBoundsReader.cpp BonBoundsReader.hpp \
 	BonColReader.cpp BonColReader.hpp \
 	BonCutStrengthener.cpp BonCutStrengthener.hpp \
 	BonStartPointReader.cpp BonStartPointReader.hpp \
 	BonOsiTMINLPInterface.cpp BonOsiTMINLPInterface.hpp \
 	BonTMINLP2TNLP.cpp BonTMINLP2TNLP.hpp \
+	BonStdInterfaceTMINLP.cpp BonStdInterfaceTMINLP.hpp \
 	BonTMINLP2OsiLP.cpp BonTMINLP2OsiLP.hpp \
 	BonTMINLP.cpp BonTMINLP.hpp \
-	BonStdInterfaceTMINLP.hpp BonStdInterfaceTMINLP.cpp \
-	BonStdCInterface.h BonStdCInterface.cpp \
 	BonTNLPSolver.hpp BonTNLPSolver.cpp \
 	BonTNLP2FPNLP.cpp BonTNLP2FPNLP.hpp \
 	BonBranchingTQP.cpp BonBranchingTQP.hpp \
 	BonStrongBranchingSolver.cpp BonStrongBranchingSolver.hpp \
-        BonRegisteredOption.hpp BonRegisteredOptions.cpp
+    BonRegisteredOption.hpp BonRegisteredOptions.cpp
 
 #sublibraries for various installed solvers
 libbonmininterfaces_la_LIBADD = Ipopt/libipoptinterface.la
@@ -78,14 +77,10 @@ includecoin_HEADERS = \
      BonTMINLP2TNLP.hpp \
      BonAuxInfos.hpp \
      BonTMINLP.hpp \
-	 BonStdCInterface.h \
-     BonStdInterfaceTMINLP.hpp \
      BonTNLP2FPNLP.hpp \
      BonCutStrengthener.hpp \
      BonTNLPSolver.hpp \
      BonBranchingTQP.hpp \
-     BonStdCInterface.h \
-     BonStdInterfaceTMINLP.hpp \
      BonStrongBranchingSolver.hpp \
      BonTMINLP2OsiLP.hpp \
      BonTypes.hpp \
@@ -127,11 +122,10 @@ ASTYLE_FILES = \
 	BonStrongBranchingSolver.hppbak \
 	BonTMINLP2TNLP.cppbak \
 	BonTMINLP2TNLP.hppbak \
+	BonStdInterfaceTMINLP.cppbak \
+	BonStdInterfaceTMINLP.hppbak \
 	BonTMINLP.cppbak \
 	BonTMINLP.hppbak \
-	BonStdCInterface.cppbak \
-	BonStdInterfaceTMINLP.hppbak \
-	BonStdInterfaceTMINLP.cppbak \
 	BonTNLP2FPNLP.cppbak \
 	BonTNLP2FPNLP.hppbak \
 	BonTNLPSolver.cppbak \
