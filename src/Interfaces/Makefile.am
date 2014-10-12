@@ -22,7 +22,7 @@ endif
 ########################################################################
 
 # Name of the library in this directory
-noinst_LTLIBRARIES = libbonmininterfaces.la 
+noinst_LTLIBRARIES = libbonmininterfaces.la
 # List all source files, including headers
 libbonmininterfaces_la_SOURCES = \
         BonAuxInfos.cpp BonAuxInfos.hpp \
@@ -34,6 +34,8 @@ libbonmininterfaces_la_SOURCES = \
 	BonTMINLP2TNLP.cpp BonTMINLP2TNLP.hpp \
 	BonTMINLP2OsiLP.cpp BonTMINLP2OsiLP.hpp \
 	BonTMINLP.cpp BonTMINLP.hpp \
+	BonStdInterfaceTMINLP.hpp BonStdInterfaceTMINLP.cpp \
+	BonStdCInterface.h BonStdCInterface.cpp \
 	BonTNLPSolver.hpp BonTNLPSolver.cpp \
 	BonTNLP2FPNLP.cpp BonTNLP2FPNLP.hpp \
 	BonBranchingTQP.cpp BonBranchingTQP.hpp \
@@ -41,7 +43,7 @@ libbonmininterfaces_la_SOURCES = \
         BonRegisteredOption.hpp BonRegisteredOptions.cpp
 
 #sublibraries for various installed solvers
-libbonmininterfaces_la_LIBADD = Ipopt/libipoptinterface.la 
+libbonmininterfaces_la_LIBADD = Ipopt/libipoptinterface.la
 
 if COIN_HAS_FILTERSQP
 libbonmininterfaces_la_LIBADD += Filter/libfilterinterface.la
@@ -76,10 +78,14 @@ includecoin_HEADERS = \
      BonTMINLP2TNLP.hpp \
      BonAuxInfos.hpp \
      BonTMINLP.hpp \
+	 BonStdCInterface.h \
+     BonStdInterfaceTMINLP.hpp \
      BonTNLP2FPNLP.hpp \
      BonCutStrengthener.hpp \
      BonTNLPSolver.hpp \
      BonBranchingTQP.hpp \
+     BonStdCInterface.h \
+     BonStdInterfaceTMINLP.hpp \
      BonStrongBranchingSolver.hpp \
      BonTMINLP2OsiLP.hpp \
      BonTypes.hpp \
@@ -123,6 +129,9 @@ ASTYLE_FILES = \
 	BonTMINLP2TNLP.hppbak \
 	BonTMINLP.cppbak \
 	BonTMINLP.hppbak \
+	BonStdCInterface.cppbak \
+	BonStdInterfaceTMINLP.hppbak \
+	BonStdInterfaceTMINLP.cppbak \
 	BonTNLP2FPNLP.cppbak \
 	BonTNLP2FPNLP.hppbak \
 	BonTNLPSolver.cppbak \
