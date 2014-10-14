@@ -5,6 +5,8 @@
 #include "BonBonminSetup.hpp"
 #include "BonCbc.hpp"
 
+using namespace Bonmin;
+
 struct BonminProblemInfo
 {
     Index n;
@@ -21,9 +23,9 @@ struct BonminProblemInfo
     Eval_Grad_F_CB eval_grad_f;
     Eval_Jac_G_CB eval_jac_g;
     Eval_H_CB eval_h;
-    VariableType* var_types;
-    LinearityType* var_linearity_types;
-    LinearityType* constraint_linearity_types;
+    VariableTypeC* var_types;
+    LinearityTypeC* var_linearity_types;
+    LinearityTypeC* constraint_linearity_types;
     // BranchingInfo branch,
     // SosInfo sos,
     Intermediate_CB intermediate_cb;
@@ -48,13 +50,13 @@ BonminProblem CreateBonminProblem(
 				, Eval_Grad_F_CB eval_grad_f
 				, Eval_Jac_G_CB eval_jac_g
 				, Eval_H_CB eval_h
-				, VariableType* var_types
-				, LinearityType* var_linearity_types
-				, LinearityType* constraint_linearity_types )
+				, VariableTypeC* var_types
+				, LinearityTypeC* var_linearity_types
+				, LinearityTypeC* constraint_linearity_types )
 {
 	if ( n<1 || m<0 || !x_L || !x_U || (m>0 && (!g_L || !g_U)) ||
 	        (m==0 && nele_jac != 0) || (m>0 && nele_jac < 1) || nele_hess < 0 ||
-	        !eval_f || !eval_grad_f || (m>0 && (!eval_g || !eval_jac_g))
+	        !eval_f || !eval_grad_f || (m>0 && (!eval_g || !eval_jac_g)) ||
 	        !var_types || !var_linearity_types || (m>0 && !constraint_linearity_types) )
 	{
 	    return NULL;
@@ -104,7 +106,7 @@ BonminProblem CreateBonminProblem(
     retval->x_scaling = NULL;
     retval->g_scaling = NULL;
 
-    bonmin_setup.initializeOptionsAndJournalist();
+    retval->bonmin_setup.initializeOptionsAndJournalist();
 
     return retval;
 }
@@ -127,32 +129,33 @@ void FreeBonminProblem(BonminProblem bonmin_problem)
 	delete bonmin_problem;
 }
 
-Bool AddBonminStrOption(BonminProblem bonmin_problem, char* keyword, char* val);
+Bool AddBonminStrOption(BonminProblem bonmin_problem, char* keyword, char* val)
 {
 	std::string tag( keyword );
 	std::string value( val );
-	return (Bool) bonmin_setup.options()->SetStringValue( tag, value );
+	return (Bool) bonmin_problem->bonmin_setup.options()->SetStringValue( tag, value );
 }
 
 Bool AddBonminNumOption(BonminProblem bonmin_problem, char* keyword, Number val)
 {
 	std::string tag(keyword);
 	Ipopt::Number value=val;
-	return (Bool) bonmin_setup.options()->SetNumericValue( tag, value );
+	return (Bool) bonmin_problem->bonmin_setup.options()->SetNumericValue( tag, value );
 }
 
 Bool AddBonminIntOption(BonminProblem bonmin_problem, char* keyword, Int val)
 {
 	std::string tag(keyword);
 	Ipopt::Index value=val;
-	return (Bool) bonmin_setup.options()->SetIntegerValue( tag, value );
+	return (Bool) bonmin_problem->bonmin_setup.options()->SetIntegerValue( tag, value );
 }
 
 Bool OpenBonminOutputFile(BonminProblem bonmin_problem, char* file_name, Int print_level)
 {
     std::string name(file_name);
     Ipopt::EJournalLevel level = Ipopt::EJournalLevel(print_level);
-    return (Bool) bonmin_setup.options()->OpenOutputFile(name, level);
+    // return (Bool) bonmin_problem->bonmin_setup.options()->OpenOutputFile(name, level);
+    return ( Bool )true;
 }
 
 Bool SetBonminProblemScaling(BonminProblem bonmin_problem,
@@ -224,35 +227,44 @@ Int BonminSolve(
 
 	// Copy the starting point information
 	::Number* start_x = new ::Number[bonmin_problem->n];
-	for (::Index i=0; i<bonmin_problem->n; i++) {
+	for (::Index i=0; i<bonmin_problem->n; i++)
+	{
 	    start_x[i] = x[i];
 	}
 	::Number* start_lam = NULL;
-	if (mult_g) {
+	if (mult_g)
+	{
 	    start_lam = new ::Number[bonmin_problem->m];
-	    for (::Index i=0; i<bonmin_problem->m; i++) {
+	    for (::Index i=0; i<bonmin_problem->m; i++)
+	    {
 	        start_lam[i] = mult_g[i];
 	    }
 	}
 	::Number* start_z_L = NULL;
-	if (mult_x_L) {
+	if (mult_x_L)
+	{
 	    start_z_L = new ::Number[bonmin_problem->n];
-	    for (::Index i=0; i<bonmin_problem->n; i++) {
+	    for (::Index i=0; i<bonmin_problem->n; i++)
+	    {
 	        start_z_L[i] = mult_x_L[i];
 	    }
 	}
 	::Number* start_z_U = NULL;
-	if (mult_x_U) {
+	if (mult_x_U)
+	{
 	    start_z_U = new ::Number[bonmin_problem->n];
-	    for (::Index i=0; i<bonmin_problem->n; i++) {
+	    for (::Index i=0; i<bonmin_problem->n; i++)
+	    {
 	        start_z_U[i] = mult_x_U[i];
 	    }
 	}
 
-	SmartPtr<TMINLP> tminlp = new TMINLP;
+
+	SmartPtr<TMINLP> tminlp;
 	try
 	{
-		tminlp = new StdInterfaceTMINLP(bonmin_problem->n, bonmin_problem->x_L,
+
+		tminlp = new Bonmin::StdInterfaceTMINLP(bonmin_problem->n, bonmin_problem->x_L,
                                     	bonmin_problem->x_U, bonmin_problem->m,
                                     	bonmin_problem->g_L, bonmin_problem->g_U,
                                     	bonmin_problem->nele_jac,
@@ -266,16 +278,16 @@ Int BonminSolve(
                                     	bonmin_problem->var_types,
                                     	bonmin_problem->var_linearity_types,
                                     	bonmin_problem->constraint_linearity_types,
-                                    	bonmin_problem->intermediate_cb,
+                                    	// bonmin_problem->intermediate_cb,
                                     	x, mult_x_L, mult_x_U, g, mult_g,
                                     	obj_val, user_data,
                                     	bonmin_problem->obj_scaling,
                                     	bonmin_problem->x_scaling,
                                     	bonmin_problem->g_scaling);
 
-	bonmin_problem.bonmin_setup.initialize( GetRawPtr( tminlp ) );
-	Bab branch_and_bound;
-	branch_and_bound( bonmin_problem.bonmin_setup );
+	bonmin_problem->bonmin_setup.initialize( GetRawPtr( tminlp ) );
+	Bonmin::Bab branch_and_bound;
+	branch_and_bound( bonmin_problem->bonmin_setup );
 	}
 	catch(TNLPSolver::UnsolvedError *E)
 	{

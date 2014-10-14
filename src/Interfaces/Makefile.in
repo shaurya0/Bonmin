@@ -65,7 +65,7 @@ am_libbonmininterfaces_la_OBJECTS = BonAuxInfos.lo BonBoundsReader.lo \
 	BonColReader.lo BonCutStrengthener.lo BonStartPointReader.lo \
 	BonOsiTMINLPInterface.lo BonTMINLP2TNLP.lo BonTMINLP2OsiLP.lo \
 	BonTMINLP.lo BonStdInterfaceTMINLP.lo BonTNLPSolver.lo BonTNLP2FPNLP.lo \
-	BonBranchingTQP.lo BonStrongBranchingSolver.lo \
+	BonBranchingTQP.lo BonStdCInterface.lo BonStrongBranchingSolver.lo \
 	BonRegisteredOptions.lo
 libbonmininterfaces_la_OBJECTS = $(am_libbonmininterfaces_la_OBJECTS)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -334,6 +334,7 @@ libbonmininterfaces_la_SOURCES = \
 	BonOsiTMINLPInterface.cpp BonOsiTMINLPInterface.hpp \
 	BonTMINLP2TNLP.cpp BonTMINLP2TNLP.hpp \
 	BonTMINLP2OsiLP.cpp BonTMINLP2OsiLP.hpp \
+	BonStdCInterface.cpp BonStdCInterface.h \
 	BonTMINLP.cpp BonTMINLP.hpp \
 	BonStdInterfaceTMINLP.cpp BonStdInterfaceTMINLP.hpp \
 	BonTNLPSolver.hpp BonTNLPSolver.cpp \
@@ -374,13 +375,13 @@ includecoindir = $(includedir)/coin
 includecoin_HEADERS = \
      BonOsiTMINLPInterface.hpp \
      BonTMINLP2TNLP.hpp \
-     Test.hpp \
      BonAuxInfos.hpp \
      BonTMINLP.hpp \
      BonTNLP2FPNLP.hpp \
      BonCutStrengthener.hpp \
      BonTNLPSolver.hpp \
      BonBranchingTQP.hpp \
+     BonStdCInterface.h \
      BonStrongBranchingSolver.hpp \
      BonTMINLP2OsiLP.hpp \
      BonTypes.hpp \
@@ -421,6 +422,7 @@ ASTYLE_FILES = \
 	BonTMINLP.hppbak \
 	BonStdInterfaceTMINLP.cppbak \
 	BonStdInterfaceTMINLP.hppbak \
+	BonStdCInterface.cppbak \
 	BonTNLP2FPNLP.cppbak \
 	BonTNLP2FPNLP.hppbak \
 	BonTNLPSolver.cppbak \
@@ -519,6 +521,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonStrongBranchingSolver.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonTMINLP.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonStdInterfaceTMINLP.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonStdCInterface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonTMINLP2OsiLP.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonTMINLP2TNLP.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BonTNLP2FPNLP.Plo@am__quote@

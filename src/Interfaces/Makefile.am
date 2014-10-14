@@ -32,6 +32,7 @@ libbonmininterfaces_la_SOURCES = \
 	BonStartPointReader.cpp BonStartPointReader.hpp \
 	BonOsiTMINLPInterface.cpp BonOsiTMINLPInterface.hpp \
 	BonTMINLP2TNLP.cpp BonTMINLP2TNLP.hpp \
+	BonStdCInterface.h BonStdCInterface.cpp \
 	BonStdInterfaceTMINLP.cpp BonStdInterfaceTMINLP.hpp \
 	BonTMINLP2OsiLP.cpp BonTMINLP2OsiLP.hpp \
 	BonTMINLP.cpp BonTMINLP.hpp \
@@ -78,6 +79,7 @@ includecoin_HEADERS = \
      BonAuxInfos.hpp \
      BonTMINLP.hpp \
      BonTNLP2FPNLP.hpp \
+     BonStdCInterface.h \
      BonCutStrengthener.hpp \
      BonTNLPSolver.hpp \
      BonBranchingTQP.hpp \
@@ -124,6 +126,7 @@ ASTYLE_FILES = \
 	BonTMINLP2TNLP.hppbak \
 	BonStdInterfaceTMINLP.cppbak \
 	BonStdInterfaceTMINLP.hppbak \
+	BonStdCInterface.cppbak \
 	BonTMINLP.cppbak \
 	BonTMINLP.hppbak \
 	BonTNLP2FPNLP.cppbak \

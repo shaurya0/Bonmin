@@ -23,13 +23,13 @@ extern "C"
 		CONTINUOUS,
 		BINARY,
 		INTEGER
-	} VariableType;
+	} VariableTypeC;
 
 	typedef enum
 	{
 		LINEAR,
 		NON_LINEAR
-	} LinearityType;
+	} LinearityTypeC;
 
 	struct BonminProblemInfo;
 
@@ -112,9 +112,9 @@ extern "C"
 				, Eval_Grad_F_CB eval_grad_f
 				, Eval_Jac_G_CB eval_jac_g
 				, Eval_H_CB eval_h
-				, VariableType* var_types
-				, LinearityType* var_linearity_types
-				, LinearityType* constraint_linearity_types );
+				, VariableTypeC* var_types
+				, LinearityTypeC* var_linearity_types
+				, LinearityTypeC* constraint_linearity_types );
 
 
 	/** Method for freeing a previously created BonminProblem.  After
@@ -163,34 +163,13 @@ extern "C"
 
 	Int BonminSolve(
 	  BonminProblem bonmin_problem
-	                     /** Problem that is to be optimized.  Ipopt
-	                         will use the options previously specified with
-	                         AddIpoptOption (etc) for this problem. */
-	, Number* x          /** Input:  Starting point
-	                         Output: Optimal solution */
-	, Number* g          /** Values of constraint at final point
-	                         (output only - ignored if set to NULL) */
-	, Number* obj_val    /** Final value of objective function
-	                         (output only - ignored if set to NULL) */
-	, Number* mult_g     * Input: Initial values for the constraint
-	                                multipliers (only if warm start option
-	                                is chosen)
-	                         Output: Final multipliers for constraints
-	                                 (ignored if set to NULL)
-	, Number* mult_x_L   /** Input: Initial values for the multipliers for
-	                                lower variable bounds (only if warm start
-	                                option is chosen)
-	                         Output: Final multipliers for lower variable
-	                                 bounds (ignored if set to NULL) */
-	, Number* mult_x_U   /** Input: Initial values for the multipliers for
-	                                upper variable bounds (only if warm start
-	                                option is chosen)
-	                         Output: Final multipliers for upper variable
-	                                 bounds (ignored if set to NULL) */
+	, Number* x
+	, Number* g
+	, Number* obj_val
+	, Number* mult_g
+	, Number* mult_x_L
+	, Number* mult_x_U
 	, UserDataPtr user_data
-	                     /** Pointer to user data.  This will be
-	                         passed unmodified to the callback
-	                         functions. */
 	);
 }
 
