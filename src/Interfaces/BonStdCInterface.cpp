@@ -260,6 +260,26 @@ Int BonminSolve(
 	}
 
 
+	// convert from C type enum to C++ enum
+	Bonmin::TMINLP::VariableType* variable_types = new Bonmin::TMINLP::VariableType[bonmin_problem->n];
+	Ipopt::TNLP::LinearityType* variable_linearity_types = new Ipopt::TNLP::LinearityType[bonmin_problem->n];
+    for (::Index i=0; i<bonmin_problem->n; i++)
+    {
+    	variable_types[i] = static_cast<Bonmin::TMINLP::VariableType>( (int)bonmin_problem->var_types[i] ); // yikes
+    	variable_linearity_types[i] = static_cast<Ipopt::TNLP::LinearityType>( (int)bonmin_problem->var_linearity_types[i] ); // yikes
+    }
+
+    Ipopt::TNLP::LinearityType* constraint_linearity_types = NULL;
+    if( bonmin_problem->m > 0 )
+    {
+    	constraint_linearity_types = new Ipopt::TNLP::LinearityType[bonmin_problem->m];
+    	for (::Index i=0; i<bonmin_problem->m; i++)
+    	{
+    		constraint_linearity_types[i] = static_cast<Ipopt::TNLP::LinearityType>( (int)bonmin_problem->constraint_linearity_types[i] ); // yikes
+    	}
+    }
+
+
 	SmartPtr<TMINLP> tminlp;
 	try
 	{
@@ -275,9 +295,9 @@ Int BonminSolve(
                                     	bonmin_problem->eval_grad_f,
                                     	bonmin_problem->eval_jac_g,
                                     	bonmin_problem->eval_h,
-                                    	bonmin_problem->var_types,
-                                    	bonmin_problem->var_linearity_types,
-                                    	bonmin_problem->constraint_linearity_types,
+                                    	variable_types,
+                                    	variable_linearity_types,
+                                    	constraint_linearity_types,
                                     	// bonmin_problem->intermediate_cb,
                                     	x, mult_x_L, mult_x_U, g, mult_g,
                                     	obj_val, user_data,
