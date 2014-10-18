@@ -91,14 +91,14 @@ namespace Bonmin
         void apply_new_x(bool new_x, Ipopt::Index n, const Ipopt::Number* x);
 
         // TODO
-        virtual const SosInfo * sosConstraints() const{return sos_;}
-        virtual const BranchingInfo* branchingInfo() const{return branch_;}
+        virtual const SosInfo * sosConstraints() const{return sos_info_;}
+        virtual const BranchingInfo* branchingInfo() const{return branch_info_;}
 
-        SosInfo* getSosInfo(){return sos_;}
-        BranchingInfo* getBranchingInfo(){return branch_;}
+        SosInfo* getSosInfo(){return sos_info_;}
+        BranchingInfo* getBranchingInfo(){return branch_info_;}
 
     private:
-        /** Journlist */
+        /** Journlist *info_/
         Ipopt::SmartPtr<const Ipopt::Journalist> jnlst_;
 
         /** @name Information about the problem */
@@ -155,10 +155,10 @@ namespace Bonmin
         Intermediate_CB intermediate_cb_;
 
         /** Storage of branching priorities information.*/
-        BranchingInfo* branch_;
+        BranchingInfo* branch_info_;
 
         /** Storage of sos constraints */
-        SosInfo* sos_;
+        SosInfo* sos_info_;
 
         /** Pointer to user data */
         UserDataPtr user_data_;

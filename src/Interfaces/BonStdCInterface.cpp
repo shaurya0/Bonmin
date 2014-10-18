@@ -192,6 +192,27 @@ Bool AddBonminIntOption(BonminProblem bonmin_problem, char* keyword, Int val)
 	Ipopt::Index value=val;
 	return (Bool) bonmin_problem->bonmin_setup.options()->SetIntegerValue( tag, value );
 }
+Bool ReadBonminOptString( BonminProblem bonmin_problem, char* option )
+{
+	std::string opt_string( option );
+	bonmin_problem->bonmin_setup.readOptionsString( opt_string );
+	return TRUE;
+}
+
+Bool ReadBonminOptFile( BonminProblem bonmin_problem, char* file_path )
+{
+	std::string file_path_str( file_path );
+	if( file_path_str.compare( "" ) == 0 )
+	{
+		file_path = "bonmin.opt";
+		bonmin_problem->bonmin_setup.readOptionsFile();
+	}
+	else
+	{
+		bonmin_problem->bonmin_setup.readOptionsFile(file_path_str);
+	}
+	return TRUE;
+}
 
 Bool OpenBonminOutputFile(BonminProblem bonmin_problem, char* file_name, Int print_level)
 {
@@ -350,19 +371,27 @@ Int BonminSolve(
                                     	bonmin_problem->x_scaling,
                                     	bonmin_problem->g_scaling);
 
-		interfaceTMINLP->getSosInfo()->num                       = bonmin_problem->sos_info->num;
-		interfaceTMINLP->getSosInfo()->types                     = bonmin_problem->sos_info->types;
-		interfaceTMINLP->getSosInfo()->priorities                = bonmin_problem->sos_info->priorities;
-		interfaceTMINLP->getSosInfo()->numNz                     = bonmin_problem->sos_info->numNz;
-		interfaceTMINLP->getSosInfo()->starts                    = bonmin_problem->sos_info->starts;
-		interfaceTMINLP->getSosInfo()->indices                   = bonmin_problem->sos_info->indices;
-		interfaceTMINLP->getSosInfo()->weights                   = bonmin_problem->sos_info->weights;
+		if( bonmin_problem->sos_info != NULL )
+		{
+			interfaceTMINLP->getSosInfo()->num                       = bonmin_problem->sos_info->num;
+			interfaceTMINLP->getSosInfo()->types                     = bonmin_problem->sos_info->types;
+			interfaceTMINLP->getSosInfo()->priorities                = bonmin_problem->sos_info->priorities;
+			interfaceTMINLP->getSosInfo()->numNz                     = bonmin_problem->sos_info->numNz;
+			interfaceTMINLP->getSosInfo()->starts                    = bonmin_problem->sos_info->starts;
+			interfaceTMINLP->getSosInfo()->indices                   = bonmin_problem->sos_info->indices;
+			interfaceTMINLP->getSosInfo()->weights                   = bonmin_problem->sos_info->weights;
+		}
 
-		interfaceTMINLP->getBranchingInfo()->size                = bonmin_problem->branch_info->size;
-		interfaceTMINLP->getBranchingInfo()->priorities          = bonmin_problem->branch_info->priorities;
-		interfaceTMINLP->getBranchingInfo()->branchingDirections = bonmin_problem->branch_info->branchingDirections;
-		interfaceTMINLP->getBranchingInfo()->upPsCosts           = bonmin_problem->branch_info->upPsCosts;
-		interfaceTMINLP->getBranchingInfo()->downPsCosts         = bonmin_problem->branch_info->downPsCosts;
+		if ( bonmin_problem->branch_info != NULL )
+		{
+			interfaceTMINLP->getBranchingInfo()->size                = bonmin_problem->branch_info->size;
+			interfaceTMINLP->getBranchingInfo()->priorities          = bonmin_problem->branch_info->priorities;
+			interfaceTMINLP->getBranchingInfo()->branchingDirections = bonmin_problem->branch_info->branchingDirections;
+			interfaceTMINLP->getBranchingInfo()->upPsCosts           = bonmin_problem->branch_info->upPsCosts;
+			interfaceTMINLP->getBranchingInfo()->downPsCosts         = bonmin_problem->branch_info->downPsCosts;
+
+		}
+
 
 		tminlp = interfaceTMINLP;
 

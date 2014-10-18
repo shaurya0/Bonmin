@@ -73,7 +73,7 @@ extern "C"
 	*  the constrant functions.  Return value should be set to false if
 	*  there was a problem doing the evaluation. */
 	typedef Bool (*Eval_Jac_G_CB)(Index n, Number *x, Bool new_x,
-	                            Index m, Index nele_jac,
+	                            Index m, Index nnz_jac_g,
 	                            Index *iRow, Index *jCol, Number *values,
 	                            UserDataPtr user_data);
 
@@ -82,7 +82,7 @@ extern "C"
 	*  there was a problem doing the evaluation. */
 	typedef Bool (*Eval_H_CB)(Index n, Number *x, Bool new_x, Number obj_factor,
 	                        Index m, Number *lambda, Bool new_lambda,
-	                        Index nele_hess, Index *iRow, Index *jCol,
+	                        Index nnz_h_lag, Index *iRow, Index *jCol,
 	                        Number *values, UserDataPtr user_data);
 
 	/** Type defining the callback function for giving intermediate
@@ -107,8 +107,8 @@ extern "C"
 				, Index m
 				, Number* g_L
 				, Number* g_U
-				, Index nele_jac
-				, Index nele_hess
+				, Index nnz_jac_g
+				, Index nnz_h_lag
 				, Index index_style
 				, Eval_F_CB eval_f
 				, Eval_G_CB eval_g
@@ -117,7 +117,9 @@ extern "C"
 				, Eval_H_CB eval_h
 				, VariableTypeC* var_types
 				, LinearityTypeC* var_linearity_types
-				, LinearityTypeC* constraint_linearity_types );
+				, LinearityTypeC* constraint_linearity_types
+				, BonminSosInfo* sos_info
+				, BonminBranchingInfo* branching_info );
 
 
 	/** Method for freeing a previously created BonminProblem.  After
@@ -132,6 +134,10 @@ extern "C"
 	/** Function for adding a Number option.  Returns FALSE the option
 	*  could not be set (e.g., if keyword is unknown) */
 	Bool AddBonminNumOption(BonminProblem bonmin_problem, char* keyword, Number val);
+
+	Bool ReadBonminOptFile( BonminProblem bonmin_problem, char* file_path = "" );
+
+	Bool ReadBonminOptString( BonminProblem bonmin_problem, char* option );
 
 	/** Function for adding an Int option.  Returns FALSE the option
 	*  could not be set (e.g., if keyword is unknown) */
