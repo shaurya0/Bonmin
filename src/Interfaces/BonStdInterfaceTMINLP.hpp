@@ -91,9 +91,11 @@ namespace Bonmin
         void apply_new_x(bool new_x, Ipopt::Index n, const Ipopt::Number* x);
 
         // TODO
-        virtual const SosInfo * sosConstraints() const{return NULL;}
-        virtual const BranchingInfo* branchingInfo() const{return NULL;}
+        virtual const SosInfo * sosConstraints() const{return sos_;}
+        virtual const BranchingInfo* branchingInfo() const{return branch_;}
 
+        SosInfo* getSosInfo(){return sos_;}
+        BranchingInfo* getBranchingInfo(){return branch_;}
 
     private:
         /** Journlist */
@@ -153,10 +155,10 @@ namespace Bonmin
         Intermediate_CB intermediate_cb_;
 
         /** Storage of branching priorities information.*/
-        BranchingInfo branch_;
+        BranchingInfo* branch_;
 
         /** Storage of sos constraints */
-        SosInfo sos_;
+        SosInfo* sos_;
 
         /** Pointer to user data */
         UserDataPtr user_data_;

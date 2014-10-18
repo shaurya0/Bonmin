@@ -7,6 +7,45 @@
 
 using namespace Bonmin;
 
+
+//Note SosInfoC and BranchingInfoC are copied from BonTMINLP.hpp. This is not ideal
+struct BonminSosInfo
+{
+/** Number of SOS constraints.*/
+		int num;
+
+/** Type of sos. At present Only type '1' SOS are supported by Cbc*/
+		char * types;
+
+/** priorities of sos constraints.*/
+		int * priorities;
+
+/** \name Sparse storage of the elements of the SOS constraints.*/
+/** @{ */
+/** Total number of non zeroes in SOS constraints.*/
+		int numNz;
+/** For 0 <= i < nums, start[i] gives the indice of indices and weights arrays at which the description of constraints i begins..*/
+		int * starts;
+/** indices of elements belonging to the SOS.*/
+		int * indices;
+/** weights of the elements of the SOS.*/
+		double * weights;
+};
+
+struct BonminBranchingInfo
+{
+	/**number of variables*/
+	int size;
+	/** User set priorities on variables. */
+	int * priorities;
+	/** User set preferered branching direction. */
+	int * branchingDirections;
+	/** User set up pseudo costs.*/
+	double * upPsCosts;
+	/** User set down pseudo costs.*/
+	double * downPsCosts;
+};
+
 struct BonminProblemInfo
 {
     Index n;
@@ -26,9 +65,9 @@ struct BonminProblemInfo
     VariableTypeC* var_types;
     LinearityTypeC* var_linearity_types;
     LinearityTypeC* constraint_linearity_types;
-    // BranchingInfo branch,
-    // SosInfo sos,
-    Intermediate_CB intermediate_cb;
+    BonminBranchingInfo* branch_info;
+    BonminSosInfo* sos_info;
+    Intermediate_CB* intermediate_cb;
     BonminSetup bonmin_setup;
     Number obj_scaling;
     Number* x_scaling;
@@ -52,7 +91,9 @@ BonminProblem CreateBonminProblem(
 				, Eval_H_CB eval_h
 				, VariableTypeC* var_types
 				, LinearityTypeC* var_linearity_types
-				, LinearityTypeC* constraint_linearity_types )
+				, LinearityTypeC* constraint_linearity_types
+				, BonminSosInfo* sos_info
+				, BonminBranchingInfo* branch_info )
 {
 	if ( n<1 || m<0 || !x_L || !x_U || (m>0 && (!g_L || !g_U)) ||
 	        (m==0 && nele_jac != 0) || (m>0 && nele_jac < 1) || nele_hess < 0 ||
@@ -101,6 +142,8 @@ BonminProblem CreateBonminProblem(
     retval->var_linearity_types = var_linearity_types;
     retval->constraint_linearity_types = constraint_linearity_types;
     retval->intermediate_cb = NULL;
+    retval->sos_info = sos_info;
+    retval->branch_info = branch_info;
 
     retval->obj_scaling = 1;
     retval->x_scaling = NULL;
@@ -281,10 +324,12 @@ Int BonminSolve(
 
 
 	SmartPtr<TMINLP> tminlp;
+	// Bonmin::TMINLP* tminlp;
+	SmartPtr<Bonmin::StdInterfaceTMINLP> interfaceTMINLP;
 	try
 	{
 
-		tminlp = new Bonmin::StdInterfaceTMINLP(bonmin_problem->n, bonmin_problem->x_L,
+		interfaceTMINLP = new Bonmin::StdInterfaceTMINLP(bonmin_problem->n, bonmin_problem->x_L,
                                     	bonmin_problem->x_U, bonmin_problem->m,
                                     	bonmin_problem->g_L, bonmin_problem->g_U,
                                     	bonmin_problem->nele_jac,
@@ -305,14 +350,29 @@ Int BonminSolve(
                                     	bonmin_problem->x_scaling,
                                     	bonmin_problem->g_scaling);
 
-	bonmin_problem->bonmin_setup.initialize( GetRawPtr( tminlp ) );
-	Bonmin::Bab branch_and_bound;
-	branch_and_bound( bonmin_problem->bonmin_setup );
+		interfaceTMINLP->getSosInfo()->num                       = bonmin_problem->sos_info->num;
+		interfaceTMINLP->getSosInfo()->types                     = bonmin_problem->sos_info->types;
+		interfaceTMINLP->getSosInfo()->priorities                = bonmin_problem->sos_info->priorities;
+		interfaceTMINLP->getSosInfo()->numNz                     = bonmin_problem->sos_info->numNz;
+		interfaceTMINLP->getSosInfo()->starts                    = bonmin_problem->sos_info->starts;
+		interfaceTMINLP->getSosInfo()->indices                   = bonmin_problem->sos_info->indices;
+		interfaceTMINLP->getSosInfo()->weights                   = bonmin_problem->sos_info->weights;
+
+		interfaceTMINLP->getBranchingInfo()->size                = bonmin_problem->branch_info->size;
+		interfaceTMINLP->getBranchingInfo()->priorities          = bonmin_problem->branch_info->priorities;
+		interfaceTMINLP->getBranchingInfo()->branchingDirections = bonmin_problem->branch_info->branchingDirections;
+		interfaceTMINLP->getBranchingInfo()->upPsCosts           = bonmin_problem->branch_info->upPsCosts;
+		interfaceTMINLP->getBranchingInfo()->downPsCosts         = bonmin_problem->branch_info->downPsCosts;
+
+		tminlp = interfaceTMINLP;
+
+		bonmin_problem->bonmin_setup.initialize( GetRawPtr( tminlp ) );
+		Bonmin::Bab branch_and_bound;
+		branch_and_bound( bonmin_problem->bonmin_setup );
 	}
 	catch(TNLPSolver::UnsolvedError *E)
 	{
-		//There has been a failure to solve a problem with Ipopt.
-		std::cerr<<"Ipopt has failed to solve a problem"<<std::endl;
+		std::cerr<<"Bonmin has failed to solve a problem"<<std::endl;
 	}
 	catch(OsiTMINLPInterface::SimpleError &E)
 	{

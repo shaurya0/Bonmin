@@ -31,8 +31,11 @@ extern "C"
 		NON_LINEAR
 	} LinearityTypeC;
 
-	struct BonminProblemInfo;
+	struct BonminBranchingInfo;
 
+	struct BonminSosInfo;
+
+	struct BonminProblemInfo;
 	typedef struct BonminProblemInfo* BonminProblem;
 
 	typedef int Bool;
