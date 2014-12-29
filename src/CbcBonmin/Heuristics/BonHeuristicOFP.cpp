@@ -238,7 +238,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     }
 
     distanceScalingFactor = dist_user_weight_/temp_scaling_value;
-    double temp_scaling_value = nlp_nadir - nlp_utopia;
+    temp_scaling_value = nlp_nadir - nlp_utopia;
     if( std::abs(temp_scaling_value) <= epsilon )
     {
         temp_scaling_value = 1;
