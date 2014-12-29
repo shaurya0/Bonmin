@@ -183,6 +183,7 @@ AC_CONFIG_FILES([Makefile
                  experimental/RobotBonmin/Makefile
                  test/Makefile
                  examples/CppExample/Makefile
+                 examples/CExample/Makefile
                  bonmin.pc bonmin-uninstalled.pc])
 
 if test $coin_has_asl = yes ; then

@@ -193,9 +193,9 @@
 /home/shaurya/Development/Bonmin-1.7/Bonmin/src/Interfaces/config_default.h
 /home/shaurya/Development/Bonmin-1.7/Bonmin/test/InterfaceTest.cpp
 /home/shaurya/Development/Bonmin-1.7/Bonmin/ltmain.sh
-src/CbcBonmin/Heuristics/BonHeuristicOFP.hpp
-src/CbcBonmin/Heuristics/BonHeuristicOFP.cpp
-src/Interfaces/BonStdInterfaceTMINLP.hpp
-src/Interfaces/BonStdInterfaceTMINLP.cpp
-src/Interfaces/BonStdCInterface.h
-src/Interfaces/BonStdCInterface.cpp
+/home/shaurya/Development/Bonmin-1.7/Bonmin/src/CbcBonmin/Heuristics/BonHeuristicOFP.hpp
+/home/shaurya/Development/Bonmin-1.7/Bonmin/src/CbcBonmin/Heuristics/BonHeuristicOFP.cpp
+/home/shaurya/Development/Bonmin-1.7/Bonmin/src/Interfaces/BonStdInterfaceTMINLP.hpp
+/home/shaurya/Development/Bonmin-1.7/Bonmin/src/Interfaces/BonStdInterfaceTMINLP.cpp
+/home/shaurya/Development/Bonmin-1.7/Bonmin/src/Interfaces/BonStdCInterface.h
+/home/shaurya/Development/Bonmin-1.7/Bonmin/src/Interfaces/BonStdCInterface.cpp

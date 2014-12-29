@@ -8,7 +8,7 @@
 using namespace Bonmin;
 
 
-//Note SosInfoC and BranchingInfoC are copied from BonTMINLP.hpp. This is not ideal
+//Note BonminSosInfo and BonminBranchingInfo are copied from BonTMINLP.hpp. This is not ideal
 struct BonminSosInfo
 {
 /** Number of SOS constraints.*/

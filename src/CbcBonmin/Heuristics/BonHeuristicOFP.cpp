@@ -57,7 +57,7 @@ HeuristicOFP::HeuristicOFP(const HeuristicOFP &copy)
       obj_user_weight_(copy.obj_user_weight_),
       dist_user_weight_(copy.dist_user_weight_),
       delta_alpha_(copy.delta_alpha_)
-{    
+{
 }
 
 HeuristicOFP &
@@ -102,7 +102,7 @@ int HeuristicOFP::num_fractional_vars(const double *newSolution ,int numberInteg
 
 int
 HeuristicOFP::solution(double &solutionValue, double *betterSolution)
-{    
+{
     //measure time
     clock_t start = clock();
 
@@ -159,9 +159,9 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
         return returnCode;
     }
 
-    
+
     // create a set with the indices of the fractional variables
-    
+
     vector<int> integerColumns; // stores the integer variables
     int numberFractionalVariables = 0;
     for (int iColumn=0;iColumn<numberColumns;iColumn++) {
@@ -221,21 +221,36 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
 
     double temp = nlp->solveFeasibilityProblem(numberIntegerColumns,
                                                x_tilde,indexes_x_tilde,objective_norm_);
-    
+
     double fp_utopia, fp_nadir, nlp_nadir;
     fp_nadir = l1_distance( x_ofp, rounded_solution, numberIntegerColumns, integerColumns );
     fp_utopia = l1_distance( x_sol, rounded_solution, numberIntegerColumns, integerColumns );
     minlp->eval_f( numberColumns, x_sol, true, nlp_nadir );
-    
-    distanceScalingFactor = dist_user_weight_/( fp_nadir - fp_utopia );
-    objectiveScalingFactor = obj_user_weight_/( nlp_nadir - nlp_utopia );
-    
-    
+
+    // some small value
+    static const double epsilon = 1e-12;
+
+    //  check for divide by zero possibility
+    double temp_scaling_value = fp_nadir - fp_utopia;
+    if( std::abs(temp_scaling_value) <= epsilon )
+    {
+        temp_scaling_value = 1;
+    }
+
+    distanceScalingFactor = dist_user_weight_/temp_scaling_value;
+    double temp_scaling_value = nlp_nadir - nlp_utopia;
+    if( std::abs(temp_scaling_value) <= epsilon )
+    {
+        temp_scaling_value = 1;
+    }
+    objectiveScalingFactor = obj_user_weight_/temp_scaling_value;
+
+
 
     bool sufficient_alpha_decrease;
     while( numberFractionalVariables ) { //ofp argument: obj_nlp_ofp > toleranceObjectiveFP || numberFractionalVariables
         ofp_iteration++;
-        
+
         if( ofp_iteration > maxNumberIterations )
             break;
         alpha = phi*alpha;
@@ -248,14 +263,18 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
                                                     		, objectiveScalingFactor
                                                     		, distanceScalingFactor);
 
-        
+
         alpha_t[0] = alpha;
 
         memcpy( x_ofp,x_sol,numberColumns*sizeof(double) );
         memcpy( rounded_solution,x_ofp,numberColumns*sizeof(double) );
         roundObj.round( rounded_solution );
 
-        
+        // double ofp_obj;
+        // minlp->eval_f(numberColumns, x_ofp, true, ofp_obj);
+        // double l1_dist = l1_distance(x_ofp, rounded_solution, numberIntegerColumns, integerColumns);
+        // std::cout << ofp_obj << "\t" << l1_dist << std::endl;
+
         numberFractionalVariables = num_fractional_vars(x_ofp,numberIntegerColumns, integerColumns, integerTolerance);
         if (numberFractionalVariables == 0)
             break;
@@ -294,7 +313,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
             {
                 if( numberMoved >= maxNumberToMove)
                     break;
-                
+
                 int iIntCol = sortedIntegerColumns[i];
                 if(score[iIntCol] > 0.00)
                 {
@@ -362,7 +381,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
                         break;
                     }
                 }
-                
+
                 if (matched)
                     break;
             }
@@ -410,7 +429,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
         }
 
     }//end main while loop
-    
+
     // For plotting purposes
     // double ofp_dist = l1_distance(x_ofp, x_tilde, numberIntegerColumns,integerColumns);
     // double ofp_obj_;
@@ -442,7 +461,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     {
         feasible = false;
     }
-    
+
     memcpy(newSolution,x_sol,numberColumns*sizeof(double));
     if( feasible )
     {
@@ -462,7 +481,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
     delete [] row;
     delete [] columnStart;
     delete [] columnLength;
-#endif    
+#endif
     // delete [] rounded_solution;
     delete [] x_ofp;
     delete [] alpha_t;
@@ -478,7 +497,7 @@ HeuristicOFP::solution(double &solutionValue, double *betterSolution)
 void
 HeuristicOFP::registerOptions(Ipopt::SmartPtr<Bonmin::RegisteredOptions> roptions){
     roptions->SetRegisteringCategory("MINLP Heuristics", RegisteredOptions::BonminCategory);
-    
+
     roptions->AddStringOption2("heuristic_objective_feasibility_pump", "whether the heuristic objective feasibility pump should be used",
                                "no", "no", "don't use it", "yes", "use it", "");
     roptions->AddLowerBoundedNumberOption("ofp_objective_weight","user defined weight for the original objective function",
@@ -496,7 +515,7 @@ HeuristicOFP::registerOptions(Ipopt::SmartPtr<Bonmin::RegisteredOptions> roption
 }
 
 void
-HeuristicOFP::Initialize(Ipopt::SmartPtr<Ipopt::OptionsList> options){    
+HeuristicOFP::Initialize(Ipopt::SmartPtr<Ipopt::OptionsList> options){
     options->GetNumericValue("ofp_objective_weight", obj_user_weight_, "bonmin.");
     options->GetNumericValue("ofp_distance_weight", dist_user_weight_, "bonmin.");
 
@@ -534,7 +553,7 @@ RoundingOFP::gutsOfConstructor()
                          nnz_h_lag, index_style);
     //
     const double* x_sol = minlp_->x_sol();
-    
+
     // double *xsol = new double[numberColumns_];
     // std::copy(x_sol,x_sol+numberColumns_, xsol);
 
@@ -633,7 +652,7 @@ RoundingOFP::gutsOfConstructor()
 
 void
 RoundingOFP::round(double* solution)
-{        
+{
     // Performs SOS rounding for the appropriate variables
     if ( !sos_constraints.empty() )
     {
